@@ -1,0 +1,22 @@
+@tailwind components;
+
+.form-dang-nhap-main-div {
+    height: 435px;
+};
+
+@layer components {
+  .form-dang-nhap-main-div {
+    .ant-input-password {
+        @apply w-full h-11 border-none;
+        .ant-input {
+            @apply w-full pt-5;
+        };
+    };
+    .ant-input-affix-wrapper {
+        @apply p-0;
+    };
+    .ant-input-affix-wrapper-focused {
+        @apply shadow-none;
+    };
+  };
+};

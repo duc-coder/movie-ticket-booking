@@ -1,0 +1,10 @@
+@tailwind components;
+@layer components {
+  .banner .slick-dots {
+    @apply bottom-3;
+  }
+  .banner .slick-dots li button::before {
+    @apply text-white text-base;
+  }
+}
+/*# sourceMappingURL=BannerHomePage.css.map */

@@ -1,0 +1,46 @@
+@tailwind components;
+.cum-rap-danh-sach-phim-container-main-div .ant-tabs-nav-list {
+  max-height: 500px;
+  width: 500px;
+}
+
+@layer components {
+  .cum-rap-danh-sach-phim-container-main-div .ant-tabs-nav-more {
+    @apply hidden;
+  }
+  .cum-rap-danh-sach-phim-container-main-div .ant-tabs-nav-list {
+    @apply overflow-y-scroll;
+  }
+  .cum-rap-danh-sach-phim-container-main-div .ant-tabs-nav-list .ant-tabs-tab {
+    @apply w-full flex justify-start;
+    @apply py-2 px-2;
+    @apply bg-transparent;
+    @apply shadow-none;
+    @apply duration-500;
+    @apply rounded-none;
+    @apply border-solid border-b border-b-gray-300;
+  }
+  .cum-rap-danh-sach-phim-container-main-div .ant-tabs-nav-list .ant-tabs-tab .ant-tabs-tab-btn {
+    @apply text-gray-700;
+    @apply font-normal;
+  }
+  .cum-rap-danh-sach-phim-container-main-div .ant-tabs-nav-list .ant-tabs-tab-active {
+    @apply bg-transparent;
+  }
+  .cum-rap-danh-sach-phim-container-main-div .ant-tabs-nav-list .ant-tabs-tab-active .ant-tabs-tab-btn {
+    @apply text-gray-700;
+  }
+  .cum-rap-danh-sach-phim-container-main-div .ant-tabs-ink-bar {
+    @apply bg-rose-500;
+  }
+  .cum-rap-danh-sach-phim-container-main-div .ant-tabs-tab:hover {
+    @apply bg-gray-400;
+  }
+  .cum-rap-danh-sach-phim-container-main-div .ant-tabs-tab:hover .ant-tabs-tab-btn {
+    @apply text-white;
+  }
+  .cum-rap-danh-sach-phim-container-main-div .ant-tabs-nav::before {
+    @apply border-transparent;
+  }
+}
+/*# sourceMappingURL=CumRap_DanhSachPhimContainer.css.map */

@@ -1,0 +1,50 @@
+@tailwind components;
+
+.cum-rap-danh-sach-phim-container-main-div {
+    .ant-tabs-nav-list {
+        max-height: 500px;
+        width: 500px;
+    };
+};
+
+@layer components {
+    .cum-rap-danh-sach-phim-container-main-div {
+        .ant-tabs-nav-more {
+            @apply hidden;
+        };
+        .ant-tabs-nav-list {
+            @apply overflow-y-scroll;
+            .ant-tabs-tab {
+                @apply w-full flex justify-start;
+                @apply py-2 px-2;
+                @apply bg-transparent;
+                @apply shadow-none;
+                @apply duration-500;
+                @apply rounded-none;
+                @apply  border-solid border-b border-b-gray-300;
+                .ant-tabs-tab-btn {
+                    @apply text-gray-700;
+                    @apply font-normal;
+                };
+            };
+            .ant-tabs-tab-active {
+                @apply bg-transparent;
+                .ant-tabs-tab-btn {
+                    @apply text-gray-700;
+                };
+            };
+        };
+        .ant-tabs-ink-bar {
+            @apply bg-rose-500;
+        };
+        .ant-tabs-tab:hover {
+            @apply bg-gray-400;
+            .ant-tabs-tab-btn {
+                @apply text-white;
+            };
+        };
+        .ant-tabs-nav::before {
+            @apply border-transparent;
+        };
+    };
+};

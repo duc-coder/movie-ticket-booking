@@ -1,0 +1,14 @@
+@tailwind components;
+
+@layer components {
+    .banner {
+        .slick-dots {
+            @apply bottom-3;
+            li {
+                button::before {
+                    @apply text-white text-base;
+                };
+            };
+        };
+    };
+};

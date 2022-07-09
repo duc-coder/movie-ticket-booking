@@ -1,0 +1,9 @@
+@tailwind components;
+@layer components {}.footer {
+  background-image: url(../../../assets/img/footer_bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 200px !important;
+  width: 100%;
+}
+/*# sourceMappingURL=FooterTemplate.css.map */

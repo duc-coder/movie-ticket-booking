@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,SAAS,CAAT,UAAS;AAET,MAAM,CAAN,UAAM",
+    "sources": [
+        "../HeaderTemplate/HeaderTemplate.scss"
+    ],
+    "names": [],
+    "file": "HeaderTemplate.css"
+}
