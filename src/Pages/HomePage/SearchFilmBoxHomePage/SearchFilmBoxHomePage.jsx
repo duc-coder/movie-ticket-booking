@@ -11,6 +11,7 @@ import thoiGianChieuIcon from '../../../assets/img/date.png';
 import { getDanhSachLichChieuPhimAsync, selectDanhSachLichChieuPhim } from '../../../reduxToolkit/rapSlice';
 import moment from 'moment';
 import { Link, useNavigate } from 'react-router-dom';
+import _ from 'lodash';
 
 
 export default function SearchFilmBoxHomePage(props) {
@@ -48,13 +49,13 @@ export default function SearchFilmBoxHomePage(props) {
     //Danh sách hệ thống rạp, cụm rạp, lịch chiếu theo mã phim
     let danhSachLichChieuPhim = useSelector(selectDanhSachLichChieuPhim);
     let danhSachHeThongRapTheoPhim = [];
-    if (danhSachLichChieuPhim.heThongRapChieu.length > 1) {
+    if (_.size(danhSachLichChieuPhim.heThongRapChieu) > 1) {
         danhSachHeThongRapTheoPhim = danhSachLichChieuPhim.heThongRapChieu;
     };
 
     //Render danh sách phim vào popover
     const renderDanhSachPhim = () => {
-        if (danhSachPhim.length > 1) {
+        if (_.size(danhSachPhim) > 1) {
             return danhSachPhim.map((phim, index) => {
                 return <p
                     className='my-2 py-1 cursor-pointer hover:bg-gray-300'

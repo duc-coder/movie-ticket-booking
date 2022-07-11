@@ -6,6 +6,7 @@ import { Tabs } from 'antd';
 import PhimSlider from './PhimSlider';
 import { useNavigate } from 'react-router-dom';
 import styles from '../css/DanhSachPhimHomePage.css';
+import _ from 'lodash';
 const { TabPane } = Tabs;
 
 export default function DanhSachPhimHomePage(props) {
@@ -50,7 +51,7 @@ export default function DanhSachPhimHomePage(props) {
             name: item.name,
             key: item.key,
             biDanh: item.biDanh,
-            DSPhim: danhSachPhim.length > 1 ? danhSachPhim.filter(phim => {
+            DSPhim: _.size(danhSachPhim) > 1 ? danhSachPhim.filter(phim => {
                 let theLoai = '';
                 if (phim.dangChieu) {
                     theLoai = 'dangChieu';

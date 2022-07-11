@@ -2,6 +2,7 @@ import { Tabs } from 'antd';
 import React, { useEffect, useState } from 'react';
 import syles from '../css/BookingTicketBoxHomePage.css';
 import CumRap_DanhSachPhimContainer from './CumRap_DanhSachPhimContainer/CumRap_DanhSachPhimContainer';
+import _ from 'lodash';
 const { TabPane } = Tabs;
 
 export default function BookingTicketBoxHomePage(props) {
@@ -9,7 +10,7 @@ export default function BookingTicketBoxHomePage(props) {
     //Nhận props từ HomePage
     let { danhSachHeThongRap } = props;
 
-    let tabValue = danhSachHeThongRap.length > 1 ? danhSachHeThongRap.map((Rap, index) => { //Thêm key number vào danh sách hệ thống rạp
+    let tabValue = _.size(danhSachHeThongRap) > 1 ? danhSachHeThongRap.map((Rap, index) => { //Thêm key number vào danh sách hệ thống rạp
         let renderKey = () => { // Tạo key number tuỳ theo số lượng hệ thống rạp
             for (let i = 0; i < danhSachHeThongRap.length; i++) {
                 let a = 1;
