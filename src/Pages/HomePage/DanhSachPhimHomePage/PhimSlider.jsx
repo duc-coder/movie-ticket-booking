@@ -14,6 +14,7 @@ export default function PhimSlider(props) {
 
     //Props nhận từ DanhSachPhimHomePage
     let { DSPhim } = props;
+    console.log(DSPhim);
 
     //Điều khiển chuyển slide
     const customSlider = React.createRef();
@@ -49,61 +50,63 @@ export default function PhimSlider(props) {
     const dateFormat = 'DD/MM/YYYY'; //Định dạng thời gian ngày khởi chiếu
 
     const renderDanSachPhim = () => {
-        return DSPhim.map((phim, index) => {
-            return <div className='px-1 mb-5' key={index}>
-                <div
-                    className='movie-card border border-gray-300 rounded-xl shadow-lg mx-2 overflow-hidden group relative'
-                >
-                    <div className='absolute top-1/4 z-0 w-full flex justify-center flex-wrap group-hover:z-10'>
-                        <button
-                            className='w-full my-2 mx-14 px-3 py-2 bg-rose-500 text-white rounded border border-transparent hover:border-rose-500 hover:bg-transparent hover:text-rose-500 duration-500 -translate-x-48 group-hover:translate-x-0'
-                            onClick={() => {
-                                openTrailerCard()
-                                setTrailerLink(phim.trailer)
-                            }}
-                        >
-                            Xem trailer
-                        </button>
-                        <button
-                            className='w-full my-2 mx-14 px-3 py-2 border border-rose-500 text-rose-500 rounded hover:border-transparent hover:bg-rose-500 hover:text-white duration-500 translate-x-48 group-hover:translate-x-0'
-                            onClick={() => { navigate(`/phim/${phim.maPhim}`) }}
-                        >
-                            Xem chi tiết
-                        </button>
-                    </div>
+        if (DSPhim.length > 1) {
+            return DSPhim.map((phim, index) => {
+                return <div className='px-1 mb-5' key={index}>
                     <div
-                        className='w-full flex flex-wrap relative justify-center overflow-hidden'
+                        className='movie-card border border-gray-300 rounded-xl shadow-lg mx-2 overflow-hidden group relative'
                     >
-                        <img
-                            src={phim.hinhAnh}
-                            className='w-full h-80 group-hover:scale-105'
-                        />
-                        <div className='absolute w-full h-80 group-hover:bg-black/60' />
-                    </div>
-                    <div
-                        className='w-full my-5 flex flex-wrap justify-center'
-                    >
-                        <Link to={`/phim/${phim.maPhim}`}>
-                            <p className='w-full text-center text-base font-bold hover:text-rose-500 duration-500'>
-                                {phim.tenPhim}
+                        <div className='absolute top-1/4 z-0 w-full flex justify-center flex-wrap group-hover:z-10'>
+                            <button
+                                className='w-full my-2 mx-14 px-3 py-2 bg-rose-500 text-white rounded border border-transparent hover:border-rose-500 hover:bg-transparent hover:text-rose-500 duration-500 -translate-x-48 group-hover:translate-x-0'
+                                onClick={() => {
+                                    openTrailerCard()
+                                    setTrailerLink(phim.trailer)
+                                }}
+                            >
+                                Xem trailer
+                            </button>
+                            <button
+                                className='w-full my-2 mx-14 px-3 py-2 border border-rose-500 text-rose-500 rounded hover:border-transparent hover:bg-rose-500 hover:text-white duration-500 translate-x-48 group-hover:translate-x-0'
+                                onClick={() => { navigate(`/phim/${phim.maPhim}`) }}
+                            >
+                                Xem chi tiết
+                            </button>
+                        </div>
+                        <div
+                            className='w-full flex flex-wrap relative justify-center overflow-hidden'
+                        >
+                            <img
+                                src={phim.hinhAnh}
+                                className='w-full h-80 group-hover:scale-105'
+                            />
+                            <div className='absolute w-full h-80 group-hover:bg-black/60' />
+                        </div>
+                        <div
+                            className='w-full my-5 flex flex-wrap justify-center'
+                        >
+                            <Link to={`/phim/${phim.maPhim}`}>
+                                <p className='w-full text-center text-base font-bold hover:text-rose-500 duration-500'>
+                                    {phim.tenPhim}
+                                </p>
+                            </Link>
+                            <p className='w-full my-2 text-center'>
+                                <Rate
+                                    className='text-base text-rose-500'
+                                    allowHalf
+                                    disabled
+                                    defaultValue={phim.danhGia / 2}
+                                /> {phim.danhGia / 2}/5
                             </p>
-                        </Link>
-                        <p className='w-full my-2 text-center'>
-                            <Rate
-                                className='text-base text-rose-500'
-                                allowHalf
-                                disabled
-                                defaultValue={phim.danhGia / 2}
-                            /> {phim.danhGia / 2}/5
-                        </p>
-                        <p className='w-full text-center text-sm text-gray-500'>
-                            Ngày khởi chiếu: {moment(phim.ngayKhoiChieu).format(dateFormat)}
-                        </p>
+                            <p className='w-full text-center text-sm text-gray-500'>
+                                Ngày khởi chiếu: {moment(phim.ngayKhoiChieu).format(dateFormat)}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        });
-    }
+            });
+        };
+    };
 
     return (
         <div className="w-11/12 mx-auto relative">
