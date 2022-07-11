@@ -29,21 +29,23 @@ export default function BannerHomePage(props) {
     };
 
     const renderBannerSlide = () => {
-        return danhSachBanner.map((image, index) => {
-            return <div
-                key={index}
-                className='w-full overflow-hidden'
-            >
-                <Link to={`/phim/${image.maPhim}`}>
-                    <img
-                        src={image.hinhAnh}
-                        alt='film-banner'
-                        className='w-full bg-cover home-page-banner'
-                    />
-                </Link>
-            </div>
-        })
-    }
+        if (danhSachBanner.length > 1) {
+            return danhSachBanner.map((image, index) => {
+                return <div
+                    key={index}
+                    className='w-full overflow-hidden'
+                >
+                    <Link to={`/phim/${image.maPhim}`}>
+                        <img
+                            src={image.hinhAnh}
+                            alt='film-banner'
+                            className='w-full bg-cover home-page-banner'
+                        />
+                    </Link>
+                </div>
+            })
+        }
+    };
 
     return (
         <div className='banner w-full relative'>
