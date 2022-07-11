@@ -54,20 +54,22 @@ export default function SearchFilmBoxHomePage(props) {
 
     //Render danh sách phim vào popover
     const renderDanhSachPhim = () => {
-        return danhSachPhim.map((phim, index) => {
-            return <p
-                className='my-2 py-1 cursor-pointer hover:bg-gray-300'
-                key={index}
-                onClick={() => {
-                    hide();
-                    formik.setFieldValue('maPhim', phim.maPhim)
-                    formik.setFieldValue('tenPhim', phim.tenPhim)
-                    dispatch(getDanhSachLichChieuPhimAsync(phim.maPhim));
-                }}
-            >
-                {phim.tenPhim}
-            </p>
-        })
+        if (danhSachPhim.length > 1) {
+            return danhSachPhim.map((phim, index) => {
+                return <p
+                    className='my-2 py-1 cursor-pointer hover:bg-gray-300'
+                    key={index}
+                    onClick={() => {
+                        hide();
+                        formik.setFieldValue('maPhim', phim.maPhim)
+                        formik.setFieldValue('tenPhim', phim.tenPhim)
+                        dispatch(getDanhSachLichChieuPhimAsync(phim.maPhim));
+                    }}
+                >
+                    {phim.tenPhim}
+                </p>
+            })
+        }
     };
 
     //Import nội dung danh sách phim truyền vào popver tìm phim

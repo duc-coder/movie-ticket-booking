@@ -66,7 +66,7 @@ export default function HeaderTemplate() {
   const ref = useRef();
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (!ref.current.contains(event.target)) {
+      if (!ref.current?.contains(event.target)) {
         setIsSearchOpen(false);
       }
     };

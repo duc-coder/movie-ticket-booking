@@ -50,7 +50,7 @@ export default function DanhSachPhimHomePage(props) {
             name: item.name,
             key: item.key,
             biDanh: item.biDanh,
-            DSPhim: danhSachPhim.filter(phim => {
+            DSPhim: danhSachPhim.length > 1 && danhSachPhim.filter(phim => {
                 let theLoai = '';
                 if (phim.dangChieu) {
                     theLoai = 'dangChieu';
