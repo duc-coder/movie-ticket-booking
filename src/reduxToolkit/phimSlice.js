@@ -22,16 +22,14 @@ export const getDanhSachPhimAsync = createAsyncThunk(
     'phimSlice/fetchDanhSachPhim',
     async (tenPhim) => {
         let result = await phimService.layDanhSachPhim(tenPhim);
-
         return result.data.content;
     }
 );
 
 export const getThongTinPhimAsync = createAsyncThunk(
     'phimSlice/fetchThongTinPhim',
-    async () => {
-        let result = await phimService.layThongTinPhim();
-
+    async (maPhim) => {
+        let result = await phimService.layThongTinPhim(maPhim);
         return result.data.content;
     }
 );

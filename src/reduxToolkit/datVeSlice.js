@@ -3,7 +3,11 @@ import { datVeService } from "../service/datVeService";
 import { message } from "antd";
 
 const initialState = {
-    danhSachPhongVe: [],
+    danhSachPhongVe: {
+        danhSachGhe: [],
+        thongTinPhim: {},
+    },
+    gheDangChon: [],
 };
 
 export const danhSachPhongVeAsync = createAsyncThunk(
@@ -11,7 +15,6 @@ export const danhSachPhongVeAsync = createAsyncThunk(
     async (maLichChieu) => {
         try {
             let result = await datVeService.layDanhSachPhongVe(maLichChieu);
-
             return result.data.content;
         } catch (error) {
             console.log(error);
@@ -26,7 +29,6 @@ export const datVeAsync = createAsyncThunk(
         try {
             let result = await datVeService.datVe(formData);
             message.success('Đặt vé thành công!');
-            return result.data.content;
         } catch (error) {
             console.log(error);
             return error;
@@ -40,7 +42,6 @@ export const taoLichChieuAsync = createAsyncThunk(
         try {
             let result = await datVeService.taoLichChieu(formData);
             message.success('Tạo lịch chiếu thành công!');
-            return result.data.content;
         } catch (error) {
             console.log(error);
             return error;
@@ -55,15 +56,22 @@ export const datVeSlice = createSlice({
         getDanhSachPhongVe: (state, action) => {
             state.danhSachPhongVe = action.payload;
         },
+        getSelectSeat: (state, action) => {
+            state.gheDangChon = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
             .addCase(danhSachPhongVeAsync.fulfilled, (state, action) => {
-                state.danhSachPhongVe = action.payload;
+                state.danhSachPhongVe.danhSachGhe = action.payload.danhSachGhe;
+                state.danhSachPhongVe.thongTinPhim = action.payload.thongTinPhim;
             })
     },
 });
 
-export const { getDanhSachPhongVe } = datVeSlice.actions;
+export const { getDanhSachPhongVe, getSelectSeat } = datVeSlice.actions;
+
+export const selectDanhSachPhongVe = (state) => state.datVeSlice.danhSachPhongVe;
+export const selectgheDangChon = (state) => state.datVeSlice.gheDangChon;
 
 export default datVeSlice.reducer;

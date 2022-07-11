@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAC;EACR,gBAAgB,EAAE,oDAAoD;EACtE,iBAAiB,EAAE,SAAS;EAC5B,eAAe,EAAE,KAAK;EACtB,mBAAmB,EAAE,MAAM;EAC3B,MAAM,EAAE,KAAK;CAChB",
+    "sources": [
+        "../BookingTicketBoxChiTietPhimPage/BookingTicketBoxChiTietPhimPage.scss"
+    ],
+    "names": [],
+    "file": "BookingTicketBoxChiTietPhimPage.css"
+}

@@ -23,7 +23,7 @@ export const getRequestConfig = () => {
     };
     const accessToken = getAccessToken();
     if (accessToken) {
-        config.headers.Authorization = accessToken;
+        config.headers.Authorization = `Bearer ${accessToken}`;
     }
     return config;
 }

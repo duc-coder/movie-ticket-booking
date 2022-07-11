@@ -1,0 +1,65 @@
+.movie-cover-container {
+  height: 400px;
+  overflow: hidden;
+}
+
+.movie-cover {
+  width: 100%;
+  height: auto;
+  background-size: cover;
+}
+
+.movie-title-container {
+  height: 50px;
+}
+
+.movie-tab-detail-movie-page .movie-tab-item {
+  font-size: 1rem;
+}
+
+.movie-tab-detail-movie-page .ant-tabs-nav-list {
+  @apply my-2;
+}
+
+.movie-tab-detail-movie-page .ant-tabs-nav-list .ant-tabs-tab {
+  @apply w-full flex justify-center items-center;
+  @apply bg-white;
+  @apply w-40;
+  @apply rounded;
+  @apply shadow-lg;
+  @apply duration-500;
+}
+
+.movie-tab-detail-movie-page .ant-tabs-nav-list .ant-tabs-tab .ant-tabs-tab-btn {
+  @apply text-black;
+  @apply font-bold;
+}
+
+.movie-tab-detail-movie-page .ant-tabs-nav-list .ant-tabs-tab-active {
+  @apply bg-rose-500;
+}
+
+.movie-tab-detail-movie-page .ant-tabs-nav-list .ant-tabs-tab-active .ant-tabs-tab-btn {
+  @apply text-white;
+}
+
+.movie-tab-detail-movie-page .ant-tabs-ink-bar {
+  @apply bg-transparent;
+}
+
+.movie-tab-detail-movie-page .ant-tabs-content-holder {
+  @apply border-transparent;
+}
+
+.movie-tab-detail-movie-page .ant-tabs-tab:hover {
+  @apply bg-rose-500;
+}
+
+.movie-tab-detail-movie-page .ant-tabs-tab:hover .ant-tabs-tab-btn {
+  @apply text-white;
+}
+
+.movie-tab-detail-movie-page .ant-tabs-nav::before {
+  @apply border-b-transparent;
+}
+/*# sourceMappingURL=ChiTietPhimPage.css.map */

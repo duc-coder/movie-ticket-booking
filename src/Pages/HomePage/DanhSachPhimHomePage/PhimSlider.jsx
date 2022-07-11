@@ -5,6 +5,7 @@ import { Rate } from 'antd';
 import React, { Fragment, useState } from 'react';
 import Slider from 'react-slick';
 import { Dialog, Transition } from '@headlessui/react';
+import styles from '../css/PhimSlider.css';
 import { useNavigate, Link } from 'react-router-dom';
 
 export default function PhimSlider(props) {
@@ -49,9 +50,9 @@ export default function PhimSlider(props) {
 
     const renderDanSachPhim = () => {
         return DSPhim.map((phim, index) => {
-            return <div className='px-1' key={index}>
+            return <div className='px-1 mb-5' key={index}>
                 <div
-                    className='border border-gray-300 rounded-xl shadow-lg mx-2 overflow-hidden group relative'
+                    className='movie-card border border-gray-300 rounded-xl shadow-lg mx-2 overflow-hidden group relative'
                 >
                     <div className='absolute top-1/4 z-0 w-full flex justify-center flex-wrap group-hover:z-10'>
                         <button

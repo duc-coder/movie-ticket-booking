@@ -140,8 +140,6 @@ export default function SearchFilmBoxHomePage(props) {
         })
     };
 
-    // console.log(formik.values);
-
     return (
         <div className='w-full h-36 mb-2 relative flex justify-center'>
             <div className='search-box p-3 w-11/12 rounded-2xl absolute z-10 bottom-0'>

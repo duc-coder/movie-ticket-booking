@@ -4,7 +4,7 @@ import styles from '../css/HeaderTemplate.css';
 import logo from '../../../assets/img/movie_tickets_logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faUser, faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Search from 'antd/lib/transfer/search';
 import { useDispatch, useSelector } from 'react-redux';
 import { dangXuat, selectThongTinNguoiDungDangNhap } from '../../../reduxToolkit/authSlice';
@@ -14,6 +14,7 @@ import MenuItem from 'antd/lib/menu/MenuItem';
 export default function HeaderTemplate() {
 
   let dispatch = useDispatch();
+  let navigate = useNavigate();
 
   //Lấy thông tin người dùng từ authSlice
   let ThongTinNguoiDungDangNhap = useSelector(selectThongTinNguoiDungDangNhap);
@@ -32,12 +33,20 @@ export default function HeaderTemplate() {
     <Menu className="w-52">
       {ThongTinNguoiDungDangNhap !== null
         ? (
-          <MenuItem
-            onClick={() => dispatch(dangXuat())}
-            className="w-full text-base border-solid border-0 border-b border-b-neutral-300 pb-2 hover:bg-neutral-300"
-          >
-            Đăng xuất
-          </MenuItem>
+          <Fragment>
+            <MenuItem
+              onClick={() => { navigate(`/gio-hang/${ThongTinNguoiDungDangNhap.taiKhoan}`) }}
+              className="w-full text-base border-solid border-0 border-b border-b-neutral-300 pb-2 hover:bg-neutral-300"
+            >
+              Thông tin giỏ hàng
+            </MenuItem>
+            <MenuItem
+              onClick={() => { dispatch(dangXuat()) }}
+              className="w-full text-base border-solid border-0 border-b border-b-neutral-300 pb-2 hover:bg-neutral-300"
+            >
+              Đăng xuất
+            </MenuItem>
+          </Fragment>
         )
         : (
           <>
@@ -93,7 +102,7 @@ export default function HeaderTemplate() {
   }
 
   return (
-    <div className='w-full py-3 bg-black/80'>
+    <div className='w-full py-3 bg-black/60 absolute z-10'>
       <div className='w-10/12 mx-auto grid grid-cols-12'>
         <div className='col-span-2'>
           <Link to={'/'}>

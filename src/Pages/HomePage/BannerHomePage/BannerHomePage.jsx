@@ -32,13 +32,13 @@ export default function BannerHomePage(props) {
         return danhSachBanner.map((image, index) => {
             return <div
                 key={index}
-                className='w-full h-96 overflow-hidden'
+                className='w-full overflow-hidden'
             >
                 <Link to={`/phim/${image.maPhim}`}>
                     <img
                         src={image.hinhAnh}
                         alt='film-banner'
-                        className='w-full bg-cover h-96'
+                        className='w-full bg-cover home-page-banner'
                     />
                 </Link>
             </div>
