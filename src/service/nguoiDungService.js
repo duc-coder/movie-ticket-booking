@@ -26,6 +26,6 @@ export const nguoiDungService = {
     },
 
     capNhatThongTinNguoiDung: (formData) => {
-        return httpSerivce.post(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, formData);
+        return httpSerivce.put(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, formData);
     },
 };

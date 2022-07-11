@@ -83,10 +83,11 @@ export const themNguoiDungAsync = createAsyncThunk(
 
 export const capNhatThongTinNguoiDungAsync = createAsyncThunk(
     'nguoiDungSlice/capNhatThongTinNguoiDung',
-    async (formData) => {
+    async (formData, thunkAPI) => {
         try {
             let result = await nguoiDungService.capNhatThongTinNguoiDung(formData);
             message.success('Cập nhật thông tin người dùng thành công!');
+            thunkAPI.dispatch(anFormChinhSuaHoSo()); // Ẩn form thông tin sau khi thay đổi thông tin thành công
             return result.data.content;
         } catch (error) {
             console.log(error);
@@ -125,6 +126,9 @@ export const nguoiDungSlice = createSlice({
             })
             .addCase(layThongTinNguoiDungAsync.fulfilled, (state, action) => {
                 state.thongTinNguoiDung = action.payload;
+            })
+            .addCase(capNhatThongTinNguoiDungAsync.fulfilled, (state, action) => {
+                state.danhSachNguoiDung = action.payload;
             })
     },
 });

@@ -16,8 +16,6 @@ export default function MyTicketBox({ thongTinNguoiDungDangNhap }) {
         danhSachDatVe = thongTinNguoiDungDangNhap.thongTinDatVe;
     };
 
-    console.log(danhSachDatVe);
-
     const renderDanhSachDatVe = () => {
         return danhSachDatVe.map((ve, index) => {
             return <div

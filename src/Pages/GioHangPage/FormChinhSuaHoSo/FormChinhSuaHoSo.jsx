@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import styles from '../css/FormChinhSuaHoSo.css';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
-import { anFormChinhSuaHoSo } from '../../../reduxToolkit/nguoiDungSlice';
+import { anFormChinhSuaHoSo, capNhatThongTinNguoiDungAsync } from '../../../reduxToolkit/nguoiDungSlice';
 
 const dateFormat = 'DD/MM/YYYY';
 
@@ -19,11 +19,12 @@ export default function FormChinhSuaHoSo(props) {
             email: thongTinNguoiDungURL.email,
             hoTen: thongTinNguoiDungURL.hoTen,
             soDT: thongTinNguoiDungURL.soDT,
+            matKhau: thongTinNguoiDungURL.matKhau,
+            maNhom: 'GP01',
+            maLoaiNguoiDung: thongTinNguoiDungURL.maLoaiNguoiDung,
         },
         onSubmit: values => {
-            console.log(values);
-            // dispatch(editThongTinNguoiDung(thongTinNguoiDung._id, formik.values))
-            dispatch(anFormChinhSuaHoSo());
+            dispatch(capNhatThongTinNguoiDungAsync(values));
         },
     });
 
@@ -41,7 +42,8 @@ export default function FormChinhSuaHoSo(props) {
         thongTinNguoiDungURL.taiKhoan !== formik.values.taiKhoan ||
         thongTinNguoiDungURL.email !== formik.values.email ||
         thongTinNguoiDungURL.hoTen !== formik.values.hoTen ||
-        thongTinNguoiDungURL.soDT !== formik.values.soDT
+        thongTinNguoiDungURL.soDT !== formik.values.soDT ||
+        thongTinNguoiDungURL.matKhau !== formik.values.matKhau
     ) {
         buttonDisable = false;
         cssButtonDisable = '';
@@ -83,10 +85,22 @@ export default function FormChinhSuaHoSo(props) {
                         value={formik.values.soDT} />
                 </Form.Item>
                 <Form.Item
-                    label='Tài khoản'
+                    label='Mật khẩu'
                 >
                     <Input
                         disabled={unAuthorization}
+                        name='matKhau'
+                        onChange={formik.handleChange}
+                        value={formik.values.matKhau} />
+                </Form.Item>
+                <Form.Item
+                    label='Tài khoản'
+                >
+                    <span className='text-red-500 italic'>
+                        * Không thể thay đổi tên tài khoản
+                    </span>
+                    <Input
+                        disabled
                         name='taiKhoan'
                         onChange={formik.handleChange}
                         value={formik.values.taiKhoan} />
