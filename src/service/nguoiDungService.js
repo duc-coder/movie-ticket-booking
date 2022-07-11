@@ -13,6 +13,10 @@ export const nguoiDungService = {
         };
     },
 
+    layThongTinNguoiDung: () => {
+        return httpSerivce.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`);
+    },
+
     themNguoiDung: (formData) => {
         return httpSerivce.post(`/api/QuanLyNguoiDung/ThemNguoiDung`, formData);
     },

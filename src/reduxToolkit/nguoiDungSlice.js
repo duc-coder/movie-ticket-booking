@@ -1,10 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { nguoiDungService } from "../service/nguoiDungService";
 import { message } from "antd";
+import _ from 'lodash';
 
 const initialState = {
     danhSachLoaiNguoiDung: [],
     danhSachNguoiDung: [],
+    thongTinNguoiDung: {},
+    formChinhSuaHoSoOpen: false,
 };
 
 export const danhSachLoaiNguoiDungAsync = createAsyncThunk(
@@ -22,9 +25,26 @@ export const danhSachLoaiNguoiDungAsync = createAsyncThunk(
 
 export const danhSachNguoiDungAsync = createAsyncThunk(
     'nguoiDungSlice/danhSachNguoiDung',
+    async (tuKhoa) => {
+        try {
+            let result = await nguoiDungService.layDanhSachNguoiDung(tuKhoa);
+            if (tuKhoa.trim() !== '') {
+                return _.first(result.data.content);
+            } else {
+                return result.data.content;
+            };
+        } catch (error) {
+            console.log(error);
+            return error;
+        }
+    }
+);
+
+export const layThongTinNguoiDungAsync = createAsyncThunk(
+    'nguoiDungSlice/layThongTinNguoiDung',
     async () => {
         try {
-            let result = await nguoiDungService.layDanhSachNguoiDung();
+            let result = await nguoiDungService.layThongTinNguoiDung();
             return result.data.content;
         } catch (error) {
             console.log(error);
@@ -85,6 +105,15 @@ export const nguoiDungSlice = createSlice({
         getDanhSachNguoiDung: (state, action) => {
             state.danhSachNguoiDung = action.payload;
         },
+        getThongTinNguoiDung: (state, action) => {
+            state.thongTinNguoiDung = action.payload;
+        },
+        hienThiFormChinhSuaHoSo: (state, action) => {
+            state.formChinhSuaHoSoOpen = true;
+        },
+        anFormChinhSuaHoSo: (state, action) => {
+            state.formChinhSuaHoSoOpen = false;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -94,9 +123,16 @@ export const nguoiDungSlice = createSlice({
             .addCase(danhSachNguoiDungAsync.fulfilled, (state, action) => {
                 state.danhSachNguoiDung = action.payload;
             })
+            .addCase(layThongTinNguoiDungAsync.fulfilled, (state, action) => {
+                state.thongTinNguoiDung = action.payload;
+            })
     },
 });
 
-export const { getDanhSachNguoiDung, getLoaiNguoiDung } = nguoiDungSlice.actions;
+export const { getDanhSachNguoiDung, getThongTinNguoiDung, getLoaiNguoiDung, hienThiFormChinhSuaHoSo, anFormChinhSuaHoSo } = nguoiDungSlice.actions;
+
+export const selectDanhSachNguoiDung = (state) => state.nguoiDungSlice.danhSachNguoiDung;
+export const selectThongTinNguoiDung = (state) => state.nguoiDungSlice.thongTinNguoiDung;
+export const selectFormChinhSuaHoSoOpen = (state) => state.nguoiDungSlice.formChinhSuaHoSoOpen;
 
 export default nguoiDungSlice.reducer;

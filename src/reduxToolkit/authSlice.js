@@ -14,18 +14,16 @@ export const dangNhapAsync = createAsyncThunk(
     async (formData) => {
         try {
             let result = await authService.dangNhap(formData);
-            //Set ảnh avatar mặc định khi mới tạo tài khoản
-            let thongTinNguoiDung = result.data.content;
-            if (thongTinNguoiDung.avatar === undefined) {
-                thongTinNguoiDung = {
-                    ...thongTinNguoiDung,
+            let dataJson = result.data.content;
+            if (dataJson.avatar === undefined) { //Set ảnh avatar mặc định khi mới tạo tài khoản
+                dataJson = {
+                    ...dataJson,
                     avatar: userPic,
                 };
+                localUserStorageService.setUserLocal(dataJson); //Lưu thông tin người dùng đến localStorage
             };
-            //Lưu thông tin người dùng đến localStorage
-            localUserStorageService.setUserLocal(thongTinNguoiDung);
             message.success('Đăng nhập thành công!');
-            return thongTinNguoiDung;
+            return result.data.content;
         } catch (error) {
             console.log(error);
             return error;
@@ -47,6 +45,25 @@ export const dangKyAsync = createAsyncThunk(
     }
 );
 
+export const uploadAvatar = createAsyncThunk(//Upload ảnh đại diện người dùng đến localUserStorage
+    'authSlice/uploadAvatar',
+    async (image) => {
+        try {
+            let dataJson = localUserStorageService.getUserLocal();
+            if (dataJson) {
+                localUserStorageService.setUserLocal({
+                    ...dataJson,
+                    avatar: image,
+                });
+            };
+            message.success('Upload avatar mới thành công!');
+            return image;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+);
+
 export const nguoiDungSlice = createSlice({
     name: 'nguoiDung',
     initialState,
@@ -59,11 +76,28 @@ export const nguoiDungSlice = createSlice({
             localUserStorageService.removeUserLocal();
             state.ThongTinNguoiDungDangNhap = null;
         },
+        // uploadAvatar: (state, action) => {
+        //     localUserStorageService.setUserLocal({
+        //         ...localUserStorageService.getUserLocal(),
+        //         avatar: action.payload,
+        //     });
+        //     state.ThongTinNguoiDungDangNhap.avatar = action.payload;
+        // },
     },
     extraReducers: (builder) => {
         builder
             .addCase(dangNhapAsync.fulfilled, (state, action) => {
-                state.ThongTinNguoiDungDangNhap = action.payload;
+                let dataUser = action.payload;
+                if (dataUser.avatar === undefined) {
+                    dataUser = {
+                        ...dataUser,
+                        avatar: userPic,
+                    };
+                };
+                state.ThongTinNguoiDungDangNhap = dataUser;
+            })
+            .addCase(uploadAvatar.fulfilled, (state, action) => {
+                state.ThongTinNguoiDungDangNhap.avatar = action.payload;
             })
     },
 });
