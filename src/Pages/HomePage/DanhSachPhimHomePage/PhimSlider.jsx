@@ -14,7 +14,6 @@ export default function PhimSlider(props) {
 
     //Props nhận từ DanhSachPhimHomePage
     let { DSPhim } = props;
-    console.log(DSPhim);
 
     //Điều khiển chuyển slide
     const customSlider = React.createRef();
