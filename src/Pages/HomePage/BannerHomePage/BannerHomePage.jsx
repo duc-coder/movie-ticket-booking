@@ -4,6 +4,7 @@ import React, { useRef } from 'react'
 import Slider from 'react-slick';
 import styles from '../css/BannerHomePage.css';
 import { Link } from 'react-router-dom';
+import _ from 'lodash';
 
 export default function BannerHomePage(props) {
 
@@ -29,7 +30,7 @@ export default function BannerHomePage(props) {
     };
 
     const renderBannerSlide = () => {
-        if (danhSachBanner.length > 1) {
+        if (_.size(danhSachBanner) > 1) {
             return danhSachBanner.map((image, index) => {
                 return <div
                     key={index}
