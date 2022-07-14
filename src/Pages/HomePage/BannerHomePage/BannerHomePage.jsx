@@ -40,7 +40,9 @@ export default function BannerHomePage(props) {
                         <img
                             src={image.hinhAnh}
                             alt='film-banner'
-                            className='w-full bg-cover home-page-banner'
+                            className='w-full bg-cover home-page-banner h-52
+                            lg:h-96 
+                            md:h-80'
                         />
                     </Link>
                 </div>
@@ -58,16 +60,28 @@ export default function BannerHomePage(props) {
             </Slider>
             <div className='w-full'>
                 <button
-                    className='h-96 text-white absolute top-0 left-0 w-20 hover:bg-black/30'
+                    className='text-white absolute hover:bg-black/30
+                    lg:h-96 lg:top-0 lg:left-0 lg:w-20
+                    md:h-80 md:top-0 md:left-0 md:w-20'
                     onClick={goToPrev}
                 >
-                    <FontAwesomeIcon className='text-4xl text-white/50 hover:text-white' icon={faChevronCircleLeft} />
+                    <FontAwesomeIcon
+                        className='text-white/50 hover:text-white
+                    lg:text-4xl
+                    md:text-4xl'
+                        icon={faChevronCircleLeft} />
                 </button>
                 <button
-                    className='h-96 text-white absolute top-0 right-0 w-20 hover:bg-black/30'
+                    className='text-white absolute hover:bg-black/30
+                    lg:h-96 lg:top-0 lg:right-0 lg:w-20
+                    md:h-80 md:top-0 md:right-0 md:w-20'
                     onClick={goToNext}
                 >
-                    <FontAwesomeIcon className='text-4xl text-white/50 hover:text-white' icon={faChevronCircleRight} />
+                    <FontAwesomeIcon
+                        className='text-white/50 hover:text-white
+                    lg:text-4xl
+                    md:text-4xl'
+                        icon={faChevronCircleRight} />
                 </button>
             </div>
         </div>

@@ -2,11 +2,12 @@ import { faArrowLeftLong, faArrowRightLong } from '@fortawesome/free-solid-svg-i
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import { Rate } from 'antd';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import { Dialog, Transition } from '@headlessui/react';
 import styles from '../css/PhimSlider.css';
 import { useNavigate, Link } from 'react-router-dom';
+import useWindowDimensions from '../../../HOOK/useWindowDimensions';
 
 export default function PhimSlider(props) {
 
@@ -14,6 +15,25 @@ export default function PhimSlider(props) {
 
     //Props nhận từ DanhSachPhimHomePage
     let { DSPhim } = props;
+
+    //Kiểm tra kích cỡ màn hình
+    let checkScreenDimension = useWindowDimensions();
+    //Quy định số lượng room card xuất hiện tuỳ theo kích cỡ màn hình
+    let [currentScreenDimesion, setCurrentScreenDimesion] = useState(1);
+    useEffect(() => { //Set lại giá trị currentScreenDimesion mỗi khi resize kích cỡ màn hình
+        if (checkScreenDimension.width > 1024) {
+            setCurrentScreenDimesion(5);
+        };
+        if (checkScreenDimension.width > 768 && checkScreenDimension.width <= 1024) {
+            setCurrentScreenDimesion(4)
+        };
+        if (checkScreenDimension.width > 640 && checkScreenDimension.width <= 768) {
+            setCurrentScreenDimesion(2)
+        };
+        if (checkScreenDimension.width > 320 && checkScreenDimension.width <= 640) {
+            setCurrentScreenDimesion(1)
+        };
+    }, [checkScreenDimension]);
 
     //Điều khiển chuyển slide
     const customSlider = React.createRef();
@@ -27,9 +47,9 @@ export default function PhimSlider(props) {
     //Custom tính năng slider
     const SliderSettings = {
         dots: false,
-        infinite: DSPhim.length > 5 ? true : false,
+        infinite: DSPhim?.length > currentScreenDimesion ? true : false,
         speed: 500,
-        slidesToShow: 5,
+        slidesToShow: currentScreenDimesion,
         slidesToScroll: 1,
     };
 
@@ -118,13 +138,19 @@ export default function PhimSlider(props) {
                     {renderDanSachPhim()}
                 </Slider>
                 <button
-                    className='absolute left-1/3 px-3 py-2 ml-20 rounded-xl font-bold text-base bg-white text-rose-500 border border-gray-300 duration-1000 hover:bg-rose-500 hover:text-white hover:border-transparent'
+                    className='absolute rounded-xl font-bold text-base bg-white text-rose-500 border border-gray-300 duration-1000 hover:bg-rose-500 hover:text-white hover:border-transparent
+                    left-12 px-3 py-2 ml-0
+                    md:left-1/3 md:px-3 md:py-2 md:ml-0
+                    lg:left-1/3 lg:px-3 lg:py-2 lg:ml-20'
                     onClick={() => { goToPrevious() }}
                 >
                     <FontAwesomeIcon icon={faArrowLeftLong} />
                 </button>
                 <button
-                    className='absolute right-1/3 px-3 py-2 mr-20 rounded-xl font-bold text-base bg-white text-rose-500 border border-gray-300 duration-1000 hover:bg-rose-500 hover:text-white hover:border-transparent'
+                    className='absolute rounded-xl font-bold text-base bg-white text-rose-500 border border-gray-300 duration-1000 hover:bg-rose-500 hover:text-white hover:border-transparent
+                    right-12 px-3 py-2 mr-0
+                    md:right-1/3 md:px-3 md:py-2 md:mr-0
+                    lg:right-1/3 lg:px-3 lg:py-2 lg:mr-20'
                     onClick={() => { goToNext() }}
                 >
                     <FontAwesomeIcon icon={faArrowRightLong} />
@@ -146,7 +172,7 @@ export default function PhimSlider(props) {
                     </Transition.Child>
 
                     <div className="fixed inset-0 overflow-y-auto">
-                        <div className="flex min-h-full items-center justify-center p-4 text-center">
+                        <div className="flex h-screen items-center justify-center p-4 text-center">
                             <Transition.Child
                                 as={Fragment}
                                 enter="ease-out duration-300"
@@ -156,8 +182,15 @@ export default function PhimSlider(props) {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="w-8/12 transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                                    <iframe className='w-full' height={500} src={trailerLink} title="Movie trailer" />
+                                <Dialog.Panel
+                                    className="transform overflow-hidden rounded-xl bg-white text-left align-middle shadow-xl transition-all
+                                    p-2 w-full h-2/6
+                                    md:w-11/12 md:h-2/6
+                                    lg:w-8/12 lg:h-5/6">
+                                    <iframe 
+                                    className='w-full h-full rounded-xl' 
+                                        
+                                    src={trailerLink} title="Movie trailer" />
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>

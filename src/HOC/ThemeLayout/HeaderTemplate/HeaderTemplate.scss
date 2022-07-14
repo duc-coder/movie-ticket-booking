@@ -1,5 +1,9 @@
 @tailwind components;
 
 @layer components{
-    
+    .header-template-main {
+        .ant-popover {
+            @apply md:-mt-10;
+        };
+    };
 };

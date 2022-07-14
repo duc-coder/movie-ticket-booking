@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,SAAS,CAAT,UAAS;AAET,MAAM,CAAN,UAAM",
+    "mappings": "AAAA,SAAS,CAAT,UAAS;AAET,MAAM,CAAN,UAAM;EACF,AACI,qBADiB,CACjB,YAAY,CAAC;IACT,MAAM,CAAN,SAAM;GACT",
     "sources": [
         "../HeaderTemplate/HeaderTemplate.scss"
     ],

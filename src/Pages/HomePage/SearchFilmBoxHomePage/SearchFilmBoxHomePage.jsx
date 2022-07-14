@@ -1,8 +1,8 @@
 import { useFormik } from 'formik';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Popover, message } from 'antd';
-import React, { useEffect, useRef, useState } from 'react';
+import { Popover, message } from 'antd';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../css/SearchFilmBoxHomePage.css';
 import heThongRapIcon from '../../../assets/img/cinema.png';
@@ -20,7 +20,7 @@ export default function SearchFilmBoxHomePage(props) {
     let navigate = useNavigate();
 
     //Props truyền tư HomePage
-    let { danhSachPhim, danhSachHeThongRap } = props;
+    let { danhSachPhim } = props;
 
     //Điều khiển mở/đóng popover Ant Design
     const [visible, setVisible] = useState(false);
@@ -58,7 +58,9 @@ export default function SearchFilmBoxHomePage(props) {
         if (_.size(danhSachPhim) > 1) {
             return danhSachPhim.map((phim, index) => {
                 return <p
-                    className='my-2 py-1 cursor-pointer hover:bg-gray-300'
+                    className='cursor-pointer hover:bg-gray-300
+                    lg:my-2 lg:py-1
+                    md:my-2 md:py-1'
                     key={index}
                     onClick={() => {
                         hide();
@@ -75,7 +77,9 @@ export default function SearchFilmBoxHomePage(props) {
 
     //Import nội dung danh sách phim truyền vào popver tìm phim
     const FilmInputcontent = (
-        <div className='h-52 overflow-y-scroll'>
+        <div className='overflow-y-scroll
+        lg:h-52 
+        md:h-52 md:w-60'>
             {renderDanhSachPhim()}
         </div>
     );
@@ -138,31 +142,63 @@ export default function SearchFilmBoxHomePage(props) {
                 key={index}
                 value={suatChieu.maLichChieu}
             >
-                {moment(suatChieu.ngayChieuGioChieu).format(DateFormat)} | {suatChieu.giaVe.toLocaleString()} VND
+                {moment(suatChieu.ngayChieuGioChieu).format(DateFormat)}
             </option>
         })
     };
 
     return (
-        <div className='w-full h-36 mb-2 relative flex justify-center'>
-            <div className='search-box p-3 w-11/12 rounded-2xl absolute z-10 bottom-0'>
-                <div className='w-11/12 mx-auto grid grid-cols-5'>
-                    <div className='col-span-3 w-full'>
-                        <h1 className='text-3xl text-white font-bold'>Chào mừng bạn đến với MovieStar.vn</h1>
-                        <h3 className='text-2xl text-white font-bold'>Bạn cần tìm kiếm phim gì?</h3>
+        <div className='
+        w-full px-2
+        lg:w-full lg:h-36 lg:mb-2 lg:relative lg:flex lg:justify-center
+        md:w-full md:h-44 md:mb-2 md:relative md:flex md:justify-center'>
+            <div className='search-box 
+            static w-full h-fit
+            lg:p-3 lg:w-11/12 lg:h-fit lg:absolute lg:z-10 lg:bottom-0 lg:rounded-2xl
+            md:p-2 md:w-11/12 md:h-fit md:absolute md:z-10 md:bottom-0 md:rounded-2xl'>
+                <div className='
+                w-full 
+                lg:w-11/12 lg:mx-auto lg:grid lg:grid-cols-5
+                md:w-full md:flex'>
+                    <div className='
+                    w-full pt-2
+                    lg:col-span-3 lg:w-full lg:pt-0
+                    md:flex-1 md:pt-0'>
+                        <h1 className='text-white font-bold
+                        text-center text-lg
+                        lg:text-3xl lg:text-left
+                        md:text-lg md:text-left'>
+                            Chào mừng bạn đến với MovieStar.vn
+                        </h1>
+                        <h3 className='text-white font-bold
+                        text-center
+                        lg:text-2xl lg:text-left
+                        md:text-base md:text-left'>
+                            Bạn cần tìm kiếm phim gì?
+                        </h3>
                     </div>
-                    <div className='col-span-2 w-full mx-auto flex justify-between items-center'>
-                        <button className='py-2 px-3 rounded-2xl bg-rose-500/70 text-white font-bold'
+                    <div className='
+                    w-full px-2 flex justify-between my-2
+                    lg:col-span-2 lg:w-full lg:flex lg:justify-between lg:items-center lg:my-0
+                    md:flex-1 md:w-full md:flex md:justify-between md:items-center md:my-0'>
+                        <button className='rounded-2xl bg-rose-500/70 text-white font-bold
+                        py-1 px-2 text-xs
+                        lg:py-2 lg:px-3 lg:text-base
+                        md:py-1 md:px-2 md:text-xs'
                         >
                             Tìm theo phim
                         </button>
-                        <button
-                            className='py-2 px-3 rounded-2xl bg-rose-500/70 text-white font-bold'
+                        <button className='rounded-2xl bg-rose-500/70 text-white font-bold
+                        py-1 px-2 text-xs
+                        lg:py-2 lg:px-3 lg:text-base
+                        md:py-1 md:px-2 md:text-xs'
                         >
                             Tìm theo rạp
                         </button>
-                        <button
-                            className='py-2 px-3 rounded-2xl bg-rose-500/70 text-white font-bold'
+                        <button className='rounded-2xl bg-rose-500/70 text-white font-bold
+                        py-1 px-2 text-xs
+                        lg:py-2 lg:px-3 lg:text-base
+                        md:py-1 md:px-2 md:text-xs'
                         >
                             Tìm theo thời gian
                         </button>
@@ -170,9 +206,15 @@ export default function SearchFilmBoxHomePage(props) {
                 </div>
                 <form
                     onSubmitCapture={formik.handleSubmit}
-                    className='w-full h-20 mx-auto mt-5 px-5 bg-black/60 flex justify-between items-center'
+                    className='bg-black/60 
+                    w-full h-fit
+                    lg:w-full lg:h-20 lg:mt-5 lg:px-5 lg:flex lg:flex-nowrap lg:justify-between lg:items-center
+                    md:w-full md:h-fit md:mt-5 md:px-5 md:py-2 md:flex md:flex-wrap md:justify-between md:items-center'
                 >
-                    <div className='flex justify-between'>
+                    <div className='
+                    w-full px-2
+                    lg:flex lg:justify-between lg:w-fit lg:px-0
+                    md:w-6/12 md:flex md:justify-start md:pr-5 md:px-0'>
                         <Popover
                             title="Tên phim"
                             trigger="click"
@@ -181,7 +223,10 @@ export default function SearchFilmBoxHomePage(props) {
                             onVisibleChange={handleVisibleChange}
                         >
                             <input
-                                className='w-64 h-8 px-2 bg-transparent border-b border-b-white text-white focus:outline-none'
+                                className='bg-transparent focus:outline-none text-white
+                                w-full h-10 text-center border-b border-b-white
+                                lg:w-64 lg:h-8 lg:px-2 lg:text-left
+                                md:w-full md:h-8 md:px-2 md:text-left'
                                 onkey
                                 placeholder='Tìm tên phim'
                                 name='tenPhim'
@@ -191,12 +236,18 @@ export default function SearchFilmBoxHomePage(props) {
                         </Popover>
 
                     </div>
-                    <div className='flex justify-between'>
-                        <span className='text-rose-400 font-bold text-base my-auto mr-3 flex items-center justify-between'>
+                    <div className='
+                    w-full flex justify-between items-center px-2 mt-3
+                    lg:flex lg:flex-nowrap lg:justify-start lg:items-center lg:w-fit lg:px-0 lg:mt-0
+                    md:w-6/12 md:flex md:flex-wrap md:justify-end md:pr-5 md:px-0 md:mt-0'>
+                        <span className='text-rose-400 font-bold text-base my-auto
+                        w-fit flex justify-start items-center 
+                        lg:w-32 lg:text-base lg:mr-3 lg:justify-start 
+                        md:w-full md:text-base md:justify-start'>
                             <img className='mr-2' src={heThongRapIcon} /> Hệ thống rạp
                         </span>
                         <select
-                            className='bg-transparent text-white focus:outline-none'
+                            className='bg-transparent text-white focus:outline-none w-fit'
                             name='maHeThongRap'
                             onChange={formik.handleChange}
                             onClick={() => {
@@ -209,12 +260,18 @@ export default function SearchFilmBoxHomePage(props) {
                             {renderDanhSachHeThongRap()}
                         </select>
                     </div>
-                    <div className='flex justify-between'>
-                        <span className='text-rose-400 font-bold text-base my-auto mr-3 flex items-center justify-between'>
+                    <div className='
+                    w-full flex justify-between items-center px-2 mt-3
+                    lg:flex lg:flex-nowrap lg:justify-start lg:items-center lg:w-fit lg:mt-0 lg:px-0
+                    md:w-6/12 md:mt-3 md:flex md:flex-wrap md:justify-end md:pr-5 md:px-0'>
+                        <span className='text-rose-400 font-bold my-auto 
+                        w-fit flex justify-start items-center 
+                        lg:w-24 lg:text-base lg:mr-3 lg:flex lg:items-center lg:justify-start
+                        md:w-full md:text-base md:flex md:items-center md:justify-start'>
                             <img className='mr-2' src={cumRapIcon} /> Cụm rạp
                         </span>
                         <select
-                            className='bg-transparent text-white focus:outline-none'
+                            className='bg-transparent text-white focus:outline-none w-fit'
                             name='maCumRap'
                             onChange={formik.handleChange}
                             onClick={() => {
@@ -227,12 +284,18 @@ export default function SearchFilmBoxHomePage(props) {
                             {renderDanhSachCumRapTheoHeThongRap()}
                         </select>
                     </div>
-                    <div className='flex justify-between'>
-                        <span className='text-rose-400 font-bold text-base my-auto mr-3 flex items-center justify-between'>
+                    <div className='
+                    w-full flex justify-between items-center px-2 mt-3
+                    lg:flex lg:flex-nowrap lg:justify-start lg:items-center lg:w-fit lg:mt-0 lg:px-0
+                    md:w-6/12 md:mt-3 md:flex md:flex-wrap md:justify-end md:pr-5 md:px-0'>
+                        <span className='text-rose-400 font-bold my-auto
+                        w-fit flex justify-start items-center
+                        lg:w-24 lg:text-base lg:mr-3 lg:flex lg:items-center lg:justify-start
+                        md:w-full md:text-base md:flex md:items-center md:justify-start'>
                             <img className='mr-2' src={thoiGianChieuIcon} /> Suất chiếu
                         </span>
                         <select
-                            className='bg-transparent text-white focus:outline-none'
+                            className='bg-transparent text-white focus:outline-none w-fit'
                             name='maLichChieu'
                             onChange={formik.handleChange}
                             onClick={() => {
@@ -245,11 +308,21 @@ export default function SearchFilmBoxHomePage(props) {
                             {renderDanhSachSuatChieuTheoCumRap()}
                         </select>
                     </div>
-                    <Link to={`/dat-ve/${formik.values.maLichChieu}`}>
+                    <Link to={`/dat-ve/${formik.values.maLichChieu}`}
+                        className='
+                        w-full
+                        lg:w-fit lg:h-fit'>
                         <button
                             type='submit'
+                            className='
+                            w-full
+                            lg:w-fit lg:h-fit'
                         >
-                            <FontAwesomeIcon className='text-xl px-3 py-3 rounded-full bg-white/30 text-white/60 hover:text-white' icon={faMagnifyingGlass} />
+                            <FontAwesomeIcon className='bg-white/30 text-white/60 hover:text-white
+                            w-11/12 mx-auto px-2 py-1 mt-3
+                            lg:w-6 lg:h-6 lg:text-xl lg:px-3 lg:py-3 lg:rounded-full lg:my-auto
+                            md:w-full md:py-1 md:mt-3 md:px-0'
+                                icon={faMagnifyingGlass} />
                         </button>
                     </Link>
                 </form>

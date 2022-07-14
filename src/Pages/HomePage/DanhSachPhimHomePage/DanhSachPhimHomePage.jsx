@@ -1,7 +1,4 @@
-import { faArrowLeftLong, faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import Slider from 'react-slick';
 import { Tabs } from 'antd';
 import PhimSlider from './PhimSlider';
 import { useNavigate } from 'react-router-dom';
