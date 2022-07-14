@@ -35,11 +35,16 @@ export default function BookingTicketBoxHomePage(props) {
     //render danh sách hệ thống rạp
     const contentTabNav = (rap) => {
         return <div
-            className='flex flex-wrap justify-center items-center w-full'
+            className='
+            md:flex md:flex-wrap md:justify-center md:items-center md:w-28
+            lg:flex lg:flex-wrap lg:justify-center lg:items-center lg:w-full'
             onClick={() => { setMaHTRap(rap.maHeThongRap) }}
         >
             <img className='h-10 mb-2' src={rap.logo} />
-            <p className='w-full text-center'>{rap.tenHeThongRap}</p>
+            <p className='w-full text-center
+            md:text-xs'>
+                {rap.tenHeThongRap}
+            </p>
         </div>
     }
     const renderHeThongRap = () => {

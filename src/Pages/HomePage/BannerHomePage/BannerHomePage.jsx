@@ -61,26 +61,30 @@ export default function BannerHomePage(props) {
             <div className='w-full'>
                 <button
                     className='text-white absolute hover:bg-black/30
-                    lg:h-96 lg:top-0 lg:left-0 lg:w-20
-                    md:h-80 md:top-0 md:left-0 md:w-20'
+                    h-52 top-0 left-0 w-14
+                    lg:h-96 lg:w-20
+                    md:h-80 md:w-20'
                     onClick={goToPrev}
                 >
                     <FontAwesomeIcon
                         className='text-white/50 hover:text-white
-                    lg:text-4xl
-                    md:text-4xl'
+                        text-xl
+                        lg:text-4xl
+                     md:text-4xl'
                         icon={faChevronCircleLeft} />
                 </button>
                 <button
                     className='text-white absolute hover:bg-black/30
-                    lg:h-96 lg:top-0 lg:right-0 lg:w-20
-                    md:h-80 md:top-0 md:right-0 md:w-20'
+                    h-52 top-0 right-0 w-14
+                    lg:h-96 lg:w-20
+                    md:h-80 md:w-20'
                     onClick={goToNext}
                 >
                     <FontAwesomeIcon
                         className='text-white/50 hover:text-white
-                    lg:text-4xl
-                    md:text-4xl'
+                        text-xl
+                        lg:text-4xl
+                        md:text-4xl'
                         icon={faChevronCircleRight} />
                 </button>
             </div>

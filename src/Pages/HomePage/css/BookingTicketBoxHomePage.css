@@ -2,11 +2,12 @@
 @layer components {
   .booking-ticket-box-main-div .ant-tabs-nav-list {
     @apply my-2;
+    @apply md:w-11/12 md:mx-auto;
   }
   .booking-ticket-box-main-div .ant-tabs-nav-list .ant-tabs-tab {
-    @apply w-full flex justify-center items-center;
+    @apply md:flex md:justify-center md:items-center;
+    @apply lg:w-40 lg:flex lg:justify-center lg:items-center;
     @apply bg-white;
-    @apply w-40;
     @apply rounded;
     @apply shadow-lg;
     @apply duration-500;

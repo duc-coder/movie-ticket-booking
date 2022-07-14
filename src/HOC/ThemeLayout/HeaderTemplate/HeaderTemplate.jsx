@@ -114,13 +114,13 @@ export default function HeaderTemplate() {
 
   return (
     <div className='header-template-main 
-    w-full h-20 bg-black/60 fixed top-0 z-10
+    w-full h-20 bg-black relative
     lg:w-full lg:h-fit lg:py-3 lg:bg-black/60 lg:absolute lg:z-10
     md:w-full md:h-fit md:py-3 md:bg-black/60 md:absolute md:z-10'>
       <div className='
-      w-full mx-1 flex justify-between items-start mt-2
-      lg:w-10/12 lg:mx-auto lg:flex-none lg:grid lg:grid-cols-12 lg:mt-0
-      md:w-11/12 md:mx-auto md:flex-none md:grid md:grid-cols-12 md:mt-0'>
+      w-full mx-1 flex justify-between items-start pt-2
+      lg:w-10/12 lg:mx-auto lg:flex-none lg:grid lg:grid-cols-12 lg:pt-0
+      md:w-11/12 md:mx-auto md:flex-none md:grid md:grid-cols-12 md:pt-0'>
         <div className='
         w-28
         lg:col-span-2 lg:w-fit

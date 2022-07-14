@@ -241,7 +241,7 @@ export default function SearchFilmBoxHomePage(props) {
                     lg:flex lg:flex-nowrap lg:justify-start lg:items-center lg:w-fit lg:px-0 lg:mt-0
                     md:w-6/12 md:flex md:flex-wrap md:justify-end md:pr-5 md:px-0 md:mt-0'>
                         <span className='text-rose-400 font-bold text-base my-auto
-                        w-fit flex justify-start items-center 
+                        w-40 flex justify-start items-center 
                         lg:w-32 lg:text-base lg:mr-3 lg:justify-start 
                         md:w-full md:text-base md:justify-start'>
                             <img className='mr-2' src={heThongRapIcon} /> Hệ thống rạp
@@ -265,13 +265,13 @@ export default function SearchFilmBoxHomePage(props) {
                     lg:flex lg:flex-nowrap lg:justify-start lg:items-center lg:w-fit lg:mt-0 lg:px-0
                     md:w-6/12 md:mt-3 md:flex md:flex-wrap md:justify-end md:pr-5 md:px-0'>
                         <span className='text-rose-400 font-bold my-auto 
-                        w-fit flex justify-start items-center 
+                        w-28 flex justify-start items-center 
                         lg:w-24 lg:text-base lg:mr-3 lg:flex lg:items-center lg:justify-start
                         md:w-full md:text-base md:flex md:items-center md:justify-start'>
                             <img className='mr-2' src={cumRapIcon} /> Cụm rạp
                         </span>
                         <select
-                            className='bg-transparent text-white focus:outline-none w-fit'
+                            className='bg-transparent text-white focus:outline-none w-fit flex flex-wrap'
                             name='maCumRap'
                             onChange={formik.handleChange}
                             onClick={() => {
@@ -289,7 +289,7 @@ export default function SearchFilmBoxHomePage(props) {
                     lg:flex lg:flex-nowrap lg:justify-start lg:items-center lg:w-fit lg:mt-0 lg:px-0
                     md:w-6/12 md:mt-3 md:flex md:flex-wrap md:justify-end md:pr-5 md:px-0'>
                         <span className='text-rose-400 font-bold my-auto
-                        w-fit flex justify-start items-center
+                        w-32 flex justify-start items-center
                         lg:w-24 lg:text-base lg:mr-3 lg:flex lg:items-center lg:justify-start
                         md:w-full md:text-base md:flex md:items-center md:justify-start'>
                             <img className='mr-2' src={thoiGianChieuIcon} /> Suất chiếu
