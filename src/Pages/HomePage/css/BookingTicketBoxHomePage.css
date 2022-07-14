@@ -2,10 +2,9 @@
 @layer components {
   .booking-ticket-box-main-div .ant-tabs-nav-list {
     @apply my-2;
-    @apply md:w-11/12 md:mx-auto;
+    @apply lg:w-11/12 lg:mx-auto lg:flex lg:justify-center;
   }
   .booking-ticket-box-main-div .ant-tabs-nav-list .ant-tabs-tab {
-    @apply md:flex md:justify-center md:items-center;
     @apply lg:w-40 lg:flex lg:justify-center lg:items-center;
     @apply bg-white;
     @apply rounded;

@@ -54,17 +54,31 @@ export default function CumRap_DanhSachPhimContainer(props) {
     //render danh sách cụm rạp
     const CumRapTabNavContent = (cumRap) => {
         return <div
-            className='w-96'
+            className=''
             onClick={() => { setDSPhim(cumRap.danhSachPhim) }}
         >
-            <p className='w-full font-bold text-left text-lg text-rose-500'>{cumRap.tenCumRap}</p>
-            <p className='w-full text-sm text-left'>{cumRap.diaChi}</p>
+            <p className='font-bold text-left text-rose-500
+            md:text-xs md:break-words
+            lg:text-lg'
+            >
+                {cumRap.tenCumRap}
+            </p>
+            <p className='text-left
+            md:text-xs md:inline md:break-words
+            lg:text-sm'
+            >
+                {cumRap.diaChi}
+                </p>
         </div>
     }
 
     const renderDanhSachCumRap = () => {
         return tabValue.map((cumRap, index) => {
-            return <TabPane tab={CumRapTabNavContent(cumRap)} key={cumRap.key} className='w-full'>
+            return <TabPane
+                tab={CumRapTabNavContent(cumRap)}
+                key={cumRap.key}
+                className='w-full'
+            >
                 <DanhSachPhimContainer DSPhim={DSPhim} />
             </TabPane>
         });
