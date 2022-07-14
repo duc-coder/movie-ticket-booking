@@ -36,13 +36,15 @@ export default function BookingTicketBoxHomePage(props) {
     const contentTabNav = (rap) => {
         return <div
             className='
-            md:flex md:flex-wrap md:justify-center md:items-center md:w-28
-            lg:flex lg:flex-wrap lg:justify-center lg:items-center lg:w-full'
+            w-20 flex flex-wrap justify-center items-center px-2
+            md:flex md:flex-wrap md:justify-center md:items-center md:w-28 md:px-0
+            lg:flex lg:flex-wrap lg:justify-center lg:items-center lg:w-full lg:px-0'
             onClick={() => { setMaHTRap(rap.maHeThongRap) }}
         >
             <img className='h-10 mb-2' src={rap.logo} />
             <p className='w-full text-center
-            md:text-xs'>
+            text-xs break-words whitespace-pre-wrap
+            lg:text-base'>
                 {rap.tenHeThongRap}
             </p>
         </div>
@@ -51,6 +53,7 @@ export default function BookingTicketBoxHomePage(props) {
         return tabValue.map((Rap, index) => {
             return <TabPane tab={contentTabNav(Rap)} key={Rap.key} 
             className='shadow-xl border border-gray-200 rounded
+            w-11/12 mx-auto
             md:w-11/12 md:mx-auto md:flex md:flex-wrap md:justify-center md:mb-5
             lg:w-11/12 lg:mx-auto lg:flex lg:flex-wrap lg:justify-center lg:mb-5'>
                 <CumRap_DanhSachPhimContainer maHeThongRap={maHTRap} />

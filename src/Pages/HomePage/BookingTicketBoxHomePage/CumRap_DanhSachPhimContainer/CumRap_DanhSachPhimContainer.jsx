@@ -5,6 +5,7 @@ import DanhSachPhimContainer from './DanhSachPhimContainer';
 import { Tabs } from 'antd';
 import styles from '../css/CumRap_DanhSachPhimContainer.css';
 import _ from 'lodash';
+import useWindowDimensions from '../../../../HOOK/useWindowDimensions';
 const { TabPane } = Tabs;
 
 export default function CumRap_DanhSachPhimContainer(props) {
@@ -13,6 +14,18 @@ export default function CumRap_DanhSachPhimContainer(props) {
 
     //Nhận props từ BookingTicketBoxHomePage
     let maHeThongRap = props.maHeThongRap;
+
+
+
+    //Kiểm tra kích cỡ màn hình
+    let checkScreenDimension = useWindowDimensions();
+    //Quy định vị trí tab navigation theo kích cỡ màn hình
+    const [tabNavPosition, setTabNavPosition] = useState('left');
+    useEffect(() => { //Set lại giá trị currentScreenDimesion mỗi khi resize kích cỡ màn hình
+        if (checkScreenDimension.width > 320 && checkScreenDimension.width <= 640) {
+            setTabNavPosition('top')
+        };
+    }, [checkScreenDimension]);
 
     useEffect(() => {
         if (maHeThongRap !== null) {
@@ -54,21 +67,27 @@ export default function CumRap_DanhSachPhimContainer(props) {
     //render danh sách cụm rạp
     const CumRapTabNavContent = (cumRap) => {
         return <div
-            className=''
+            className='
+            w-36
+            md:w-46 md:flex md:justify-start md:flex-wrap md:item-center
+            lg:w-fit lg:flex-none'
             onClick={() => { setDSPhim(cumRap.danhSachPhim) }}
         >
-            <p className='font-bold text-left text-rose-500
-            md:text-xs md:break-words
-            lg:text-lg'
+            <p className='w-full font-bold text-rose-500
+            text-xs break-words whitespace-pre-wrap text-center
+            md:text-xs md:break-words md:whitespace-pre-wrap md:text-left
+            lg:text-lg lg:break-words lg:whitespace-pre-wrap lg:text-left'
             >
                 {cumRap.tenCumRap}
             </p>
-            <p className='text-left
-            md:text-xs md:inline md:break-words
-            lg:text-sm'
+            <span
+                className='w-full  
+                text-xs break-words whitespace-pre-wrap text-center
+                md:text-xs md:break-words md:whitespace-pre-wrap md:text-left
+                lg:text-sm lg:break-words lg:whitespace-pre-wrap lg:text-left'
             >
                 {cumRap.diaChi}
-                </p>
+            </span>
         </div>
     }
 
@@ -77,7 +96,7 @@ export default function CumRap_DanhSachPhimContainer(props) {
             return <TabPane
                 tab={CumRapTabNavContent(cumRap)}
                 key={cumRap.key}
-                className='w-full'
+                className=''
             >
                 <DanhSachPhimContainer DSPhim={DSPhim} />
             </TabPane>
@@ -89,7 +108,7 @@ export default function CumRap_DanhSachPhimContainer(props) {
             className='cum-rap-danh-sach-phim-container-main-div w-full'
         >
             <Tabs
-                tabPosition='left'
+                tabPosition={tabNavPosition}
                 className='w-full overflow-hidden'
             >
                 {renderDanhSachCumRap()}

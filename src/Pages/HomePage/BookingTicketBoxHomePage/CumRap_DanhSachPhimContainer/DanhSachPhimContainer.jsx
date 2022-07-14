@@ -17,7 +17,9 @@ export default function DanhSachPhimContainer(props) {
       >
         <Link to={`/dat-ve/${suat.maLichChieu}`}>
           <button
-            className='w-40 h-8 m-2 py-1 rounded bg-gray-100 text-rose-500 text-sm font-bold duration-300 hover:bg-rose-500 hover:text-white hover:shadow-lg'
+            className='rounded bg-gray-100 text-rose-500 font-bold duration-300 hover:bg-rose-500 hover:text-white hover:shadow-lg
+            md:text-xs md:w-fit md:h-10 md:m-2 md:py-0
+            lg:text-sm lg:w-40 lg:h-8 lg:m-2 lg:py-1'
           >
             {moment(suat.ngayChieuGioChieu).format(dateFormat)}
           </button>
@@ -31,18 +33,31 @@ export default function DanhSachPhimContainer(props) {
     return DSPhim.map((phim, index) => {
       return <div
         key={index}
-        className='w-full my-5 grid grid-cols-12 border-b border-b-gray-200'
+        className='
+        md:w-full md:my-5 md:grid md:grid-cols-12 md:border-b md:border-b-gray-200
+        lg:w-full lg:my-5 lg:grid lg:grid-cols-12 lg:border-b lg:border-b-gray-200'
       >
-        <div className='col-span-3 flex items-center justify-center'>
-          <img className='w-48 h-64' src={phim.hinhAnh} />
+        <div className='
+        md:col-span-3 md:flex md:items-center md:justify-center
+        lg:col-span-3 lg:flex lg:items-center lg:justify-center'>
+          <img className='
+          md:w-48 md:h-64
+          lg:w-48 lg:h-64' 
+          src={phim.hinhAnh} />
         </div>
-        <div className='col-span-9'>
+        <div className='
+        md:col-span-9
+        lg:col-span-9'>
           <Link to={`/phim/${phim.maPhim}`}>
-            <p className='w-11/12 mx-auto mb-2 text-xl font-bold text-rose-500 hover:underline'>
+            <p className='font-bold text-rose-500 hover:underline
+            md:w-11/12 md:mx-auto md:mb-2 md:text-xl
+            lg:w-11/12 lg:mx-auto lg:mb-2 lg:text-xl'>
               {phim.tenPhim}
             </p>
           </Link>
-          <div className='w-full h-60 grid grid-cols-3 overflow-y-scroll overflow-x-hidden'>
+          <div className='
+          md:w-11/12 md:mx-auto md:h-60 md:grid md:grid-cols-3 md:overflow-y-scroll md:overflow-x-hidden
+          lg:w-full lg:h-60 lg:grid lg:grid-cols-3 lg:overflow-y-scroll lg:overflow-x-hidden'>
             {renderLichChieuPhim(phim.lstLichChieuTheoPhim)}
           </div>
         </div>
