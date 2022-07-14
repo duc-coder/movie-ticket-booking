@@ -69,7 +69,7 @@ export default function CumRap_DanhSachPhimContainer(props) {
         return <div
             className='
             w-36
-            md:w-46 md:flex md:justify-start md:flex-wrap md:item-center
+            md:flex md:justify-start md:flex-wrap md:items-center
             lg:w-fit lg:flex-none'
             onClick={() => { setDSPhim(cumRap.danhSachPhim) }}
         >
@@ -96,7 +96,8 @@ export default function CumRap_DanhSachPhimContainer(props) {
             return <TabPane
                 tab={CumRapTabNavContent(cumRap)}
                 key={cumRap.key}
-                className=''
+                className='md:max-h-96 md:overflow-y-scroll
+                lg:overflow-y-hidden'
             >
                 <DanhSachPhimContainer DSPhim={DSPhim} />
             </TabPane>

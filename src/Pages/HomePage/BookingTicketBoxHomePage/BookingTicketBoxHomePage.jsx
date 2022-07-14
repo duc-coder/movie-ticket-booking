@@ -51,12 +51,14 @@ export default function BookingTicketBoxHomePage(props) {
     }
     const renderHeThongRap = () => {
         return tabValue.map((Rap, index) => {
-            return <TabPane tab={contentTabNav(Rap)} key={Rap.key} 
-            className='shadow-xl border border-gray-200 rounded
+            return <TabPane tab={contentTabNav(Rap)} key={Rap.key}
+                className='shadow-xl border border-gray-200 rounded
             w-11/12 mx-auto
             md:w-11/12 md:mx-auto md:flex md:flex-wrap md:justify-center md:mb-5
             lg:w-11/12 lg:mx-auto lg:flex lg:flex-wrap lg:justify-center lg:mb-5'>
-                <CumRap_DanhSachPhimContainer maHeThongRap={maHTRap} />
+                <div className='md:h-fit'>
+                    <CumRap_DanhSachPhimContainer maHeThongRap={maHTRap} />
+                </div>
             </TabPane>
         });
     };
