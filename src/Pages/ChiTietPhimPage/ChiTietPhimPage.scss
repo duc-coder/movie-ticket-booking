@@ -16,12 +16,17 @@
     .movie-tab-item {
         font-size: 1rem;
     };
+    .ant-tabs-nav-wrap {
+        @apply flex justify-center;
+    };
     .ant-tabs-nav-list {
         @apply my-2;
         .ant-tabs-tab {
             @apply w-full flex justify-center items-center;
             @apply bg-white;
-            @apply w-40;
+            @apply w-32;
+            @apply md:w-40;
+            @apply lg:w-40;
             @apply rounded;
             @apply shadow-lg;
             @apply duration-500;

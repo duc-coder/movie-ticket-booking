@@ -121,19 +121,38 @@ export default function BookingTicketBoxChiTietPhimPage(props) {
   };
 
   return (
-    <div className='w-full h-36 mb-2 relative flex justify-center'>
-      <div className='search-box p-3 w-10/12 rounded-2xl absolute z-10 bottom-0'>
-        <h1 className='w-full text-3xl text-white font-bold'>Đặt vé xem phim - {tenPhim}</h1>
+    <div className='w-full relative
+    md:h-72 md:mb-2 md:flex md:justify-center
+    lg:h-36 lg:mb-2 lg:flex lg:justify-center'>
+      <div className='search-box rounded-2xl mx-auto
+      h-fit w-11/12 p-3
+      md:p-3 md:w-9/12 md:absolute md:z-10 md:bottom-0
+      lg:p-3 lg:w-10/12 lg:h-44 lg:absolute lg:z-10 lg:bottom-0'>
+        <h1 className='w-full text-white font-bold
+        md:text-center md:text-xl
+        lg:text-left lg:text-3xl'>
+          Đặt vé xem phim - {tenPhim}
+        </h1>
         <form
           onSubmitCapture={formik.handleSubmit}
-          className='w-full h-20 mx-auto mt-5 px-5 bg-black/60 flex justify-between items-center'
+          className='w-full h-fit mx-auto mt-5 px-5 bg-black/60 
+          flex flex-wrap justify-center items-center py-2
+          md:py-5
+          lg:h-20 lg:flex lg:flex-nowrap lg:justify-between lg:items-center lg:py-0'
         >
-          <div className='flex justify-between'>
-            <span className='text-rose-400 font-bold text-base my-auto mr-3 flex items-center justify-between'>
+          <div className='w-full flex justify-between
+          my-3
+          md:my-5
+          lg:my-0 lg:justify-start'>
+            <span className='text-rose-400 font-bold my-auto flex items-center justify-between
+            text-xs
+            md:text-base md:mr-3
+            lg:text-base lg:mr-3'>
               <img className='mr-2' src={heThongRapIcon} /> Hệ thống rạp
             </span>
             <select
-              className='bg-transparent text-white focus:outline-none'
+              className='bg-transparent text-white focus:outline-none text-xs
+              lg:text-sm'
               name='maHeThongRap'
               onChange={formik.handleChange}
             >
@@ -141,12 +160,19 @@ export default function BookingTicketBoxChiTietPhimPage(props) {
               {renderDanhSachHeThongRap()}
             </select>
           </div>
-          <div className='flex justify-between'>
-            <span className='text-rose-400 font-bold text-base my-auto mr-3 flex items-center justify-between'>
+          <div className='w-full flex justify-between
+          my-3
+          md:my-5
+          lg:my-0 lg:justify-start'>
+            <span className='text-rose-400 font-bold my-auto flex items-center justify-between
+            text-xs
+            md:text-base md:mr-3
+            lg:text-base lg:mr-3'>
               <img className='mr-2' src={cumRapIcon} /> Cụm rạp
             </span>
             <select
-              className='bg-transparent text-white focus:outline-none'
+              className='bg-transparent text-white focus:outline-none text-xs
+              lg:text-sm'
               name='maCumRap'
               onChange={formik.handleChange}
               onClick={() => {
@@ -159,12 +185,19 @@ export default function BookingTicketBoxChiTietPhimPage(props) {
               {renderDanhSachCumRapTheoHeThongRap()}
             </select>
           </div>
-          <div className='flex justify-between'>
-            <span className='text-rose-400 font-bold text-base my-auto mr-3 flex items-center justify-between'>
+          <div className='w-full flex justify-between
+          my-3
+          md:my-5
+          lg:my-0 lg:justify-start'>
+            <span className='text-rose-400 font-bold my-auto flex items-center justify-between
+            text-xs
+            md:text-base md:mr-3
+            lg:text-base lg:mr-3'>
               <img className='mr-2' src={thoiGianChieuIcon} /> Suất chiếu
             </span>
             <select
-              className='bg-transparent text-white focus:outline-none'
+              className='bg-transparent text-white focus:outline-none text-xs
+              lg:text-sm'
               name='maLichChieu'
               onChange={formik.handleChange}
               onClick={() => {
@@ -177,15 +210,21 @@ export default function BookingTicketBoxChiTietPhimPage(props) {
               {renderDanhSachSuatChieuTheoCumRap()}
             </select>
           </div>
-          <Link to={`/dat-ve/${formik.values.maLichChieu}`}>
+          <Link
+            to={`/dat-ve/${formik.values.maLichChieu}`}
+            className='w-full lg:w-fit'>
             <button
               type='submit'
+              className='w-full lg:w-fit'
             >
-              <FontAwesomeIcon className='text-xl px-3 py-3 rounded-full bg-white/30 text-white/60 hover:text-white' icon={faMagnifyingGlass} />
+              <FontAwesomeIcon
+                className='rounded-full bg-white/30 text-white/60 hover:text-white
+                w-full py-2
+                lg:w-fit lg:text-xl lg:px-3 lg:py-3'
+                icon={faMagnifyingGlass} />
             </button>
           </Link>
         </form>
-
       </div>
     </div>
   )
