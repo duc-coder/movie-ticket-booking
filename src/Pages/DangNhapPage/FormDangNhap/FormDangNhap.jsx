@@ -32,15 +32,21 @@ export default function FormDangNhap() {
   })
 
   return (
-    <div className='form-dang-nhap-main-div w-full flex items-center'>
-      <div className='w-5/12 mx-auto my-5 p-2 border border-gray-300 rounded-lg shadow-xl'>
+    <div className='form-dang-nhap-main-div
+    w-full h-full flex items-center pt-20 pb-32
+    md:pb-96 md:pt-28
+    lg:pb-0 lg:h-screen lg:pt-0'>
+      <div className='border border-gray-300 rounded-lg shadow-xl
+      mx-auto w-full p-1
+      md:w-9/12 md:p-2
+      lg:w-5/12 lg:my-5 lg:p-2'>
         <h1 className='text-center text-3xl font-bold text-rose-500 mb-5'>Chào mừng bạn đến với MovieStar.vn</h1>
 
         <Form
           onSubmit={formik.handleSubmit}
         >
           <div className='w-full'>
-            <div className='w-10/12 h-16 mx-auto p-2 rounded-xl bg-white border-2 border-gray-300 relative'>
+            <div className='rounded-xl bg-white border-2 border-gray-300 relative mx-auto w-10/12 h-16 p-2'>
               <h3 className='pointer-events-none absolute z-10 text-gray-600'>
                 Tài khoản
               </h3>
@@ -76,16 +82,26 @@ export default function FormDangNhap() {
             </button>
           </div>
         </Form>
-        <div className='w-full flex justify-end mt-5 italic'>
-          <p>
-            Bạn chưa có tài khoản MovieStar?
+        <div className='w-full mt-5 italic'>
+          <span className='w-full
+          flex flex-wrap justify-center
+          md:justify-end
+          lg:justify-end'>
+            <p className='w-full text-center
+            md:text-right
+            lg:text-right'>
+              Bạn chưa có tài khoản MovieStar?
+            </p>
             <Link
               to={'/dangky'}
-              className='ml-1 text-rose-400 hover:text-rose-600 hover:underline'
+              className='text-rose-400 hover:text-rose-600 hover:underline
+              w-full ml-1 text-center
+              md:w-fit
+              lg:w-fit'
             >
               Đăng ký thành viên ngay
             </Link>
-          </p>
+          </span>
         </div>
       </div>
     </div>

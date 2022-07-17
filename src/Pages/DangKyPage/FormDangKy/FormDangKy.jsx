@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { message } from 'antd';
+import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import styles from '../css/FormDangKy.css';
 import { Link } from 'react-router-dom';
@@ -18,7 +16,10 @@ const DangKyNguoiDungSchema = yup.object().shape({
 export default function FormDangKy() {
 
   return (
-    <div className='register-container'>
+    <div className='register-container
+    w-full mx-auto pt-5 px-2 mb-2
+    md:pt-20 md:w-9/12 md:mb-2 md:px-0
+    lg:pt-28 lg:w-6/12 lg:mb-5 lg:px-0'>
       <h3 className='register-title'>
         Đăng ký tài khoản mới
       </h3>

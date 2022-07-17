@@ -1,5 +1,5 @@
 import { Tabs } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import syles from '../css/BookingTicketBoxHomePage.css';
 import CumRap_DanhSachPhimContainer from './CumRap_DanhSachPhimContainer/CumRap_DanhSachPhimContainer';
 import _ from 'lodash';

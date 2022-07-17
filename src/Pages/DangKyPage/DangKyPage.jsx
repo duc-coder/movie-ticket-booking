@@ -3,7 +3,7 @@ import FormDangKy from './FormDangKy/FormDangKy'
 
 export default function DangKyPage() {
   return (
-    <div className='w-full my-5'>
+    <div className='w-full'>
       <FormDangKy />
     </div>
   )
