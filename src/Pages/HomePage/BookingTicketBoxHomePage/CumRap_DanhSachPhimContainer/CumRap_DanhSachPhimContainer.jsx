@@ -67,10 +67,9 @@ export default function CumRap_DanhSachPhimContainer(props) {
     //render danh sách cụm rạp
     const CumRapTabNavContent = (cumRap) => {
         return <div
-            className='
-            w-36
+            className='w-36
             md:flex md:justify-start md:flex-wrap md:items-center
-            lg:w-fit lg:flex-none'
+            lg:w-full lg:flex-none'
             onClick={() => { setDSPhim(cumRap.danhSachPhim) }}
         >
             <p className='w-full font-bold text-rose-500
@@ -96,8 +95,7 @@ export default function CumRap_DanhSachPhimContainer(props) {
             return <TabPane
                 tab={CumRapTabNavContent(cumRap)}
                 key={cumRap.key}
-                className='md:max-h-96 md:overflow-y-scroll
-                lg:overflow-y-hidden'
+                className=''
             >
                 <DanhSachPhimContainer DSPhim={DSPhim} />
             </TabPane>

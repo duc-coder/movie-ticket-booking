@@ -1,9 +1,10 @@
-
-
 @tailwind components;
 
 @layer components {
     .danh-sach-phim-container-main-div {
+        @apply h-96 overflow-y-scroll;
+        @apply md:overflow-y-scroll md:h-96;
         @apply lg:overflow-y-scroll lg:h-96;
+        
     };
 };

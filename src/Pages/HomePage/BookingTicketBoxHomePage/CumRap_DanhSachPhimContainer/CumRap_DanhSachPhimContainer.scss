@@ -11,7 +11,7 @@
         .ant-tab-nav-wrap {
         };
         .ant-tabs-nav-list {
-            @apply md:h-96 md:h-96 md:max-h-full md:border-none md:overflow-y-scroll md:overflow-x-hidden;
+            @apply md:w-48 md:h-96 md:max-h-full md:border-none md:overflow-y-scroll md:overflow-x-hidden;
             @apply lg:w-96 lg:h-96 lg:max-h-full lg:border-none lg:overflow-y-scroll lg:overflow-x-hidden;
             .ant-tabs-tab {
                 @apply flex items-start mx-auto w-full;
