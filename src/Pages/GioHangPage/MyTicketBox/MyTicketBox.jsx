@@ -2,12 +2,6 @@ import React from 'react';
 import _ from 'lodash';
 import moment from 'moment';
 
-// giaVe: 75000
-// hinhAnh: "https://movienew.cybersoft.edu.vn/hinhanh/doraemon-nobita-no-little-wars-2021_gp01.jpg"
-// maVe: 81962
-// ngayDat: "2022-06-25T03:25:35.68"
-// tenPhim: "DORAEMON: NOBITA NO LITTLE WARS 2021"
-// thoiLuongPhim: 120
 const dateFormat = 'hh:mm - DD/MM/YYYY'
 export default function MyTicketBox({ thongTinNguoiDungDangNhap }) {
 
@@ -26,18 +20,25 @@ export default function MyTicketBox({ thongTinNguoiDungDangNhap }) {
                     <img className='h-40 bg-cover' src={ve.hinhAnh} />
                 </div>
                 <div className='ml-5'>
-                    <p className='text-xl font-bold'>{ve.tenPhim}</p>
-                    <p className=''><b>Thời lượng phim:</b> {ve.thoiLuongPhim} phút</p>
-                    <p className=''><b>Ngày đặt:</b> {moment(ve.ngayDat).format(dateFormat)}</p>
-                    <p className=''><b>Giá vé:</b> {ve.giaVe.toLocaleString()} VND</p>
-                    <p className=''><b>Mã vé:</b> {ve.maVe}</p>
+                    <p className='font-bold my-1
+                    text-base
+                    md:text-lg
+                    lg:text-xl'>
+                        {ve.tenPhim}
+                    </p>
+                    <p className='my-1'><b>Thời lượng phim:</b> {ve.thoiLuongPhim} phút</p>
+                    <p className='my-1'><b>Ngày đặt:</b> {moment(ve.ngayDat).format(dateFormat)}</p>
+                    <p className='my-1'><b>Giá vé:</b> {ve.giaVe.toLocaleString()} VND</p>
+                    <p className='my-1'><b>Mã vé:</b> {ve.maVe}</p>
                 </div>
             </div>
         });
     };
 
     return (
-        <div style={{height: 550}} className='w-full grid grid-cols-2 overflow-y-scroll'>
+        <div style={{ height: 550 }} className='w-full grid overflow-y-scroll
+        grid-cols-1
+        lg:grid-cols-2'>
             {renderDanhSachDatVe()}
         </div>
     )

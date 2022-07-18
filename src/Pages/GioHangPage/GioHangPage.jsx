@@ -27,7 +27,7 @@ export default function GioHangPage(props) {
   let thongTinNguoiDungURL = useSelector(selectDanhSachNguoiDung);
   let thongTinNguoiDungDangNhap = useSelector(selectThongTinNguoiDung);
   let formChinhSuaHoSoOpen = useSelector(selectFormChinhSuaHoSoOpen);
- 
+
   const [loading, setLoading] = useState(false);
   const [imgUrl, setImgUrl] = useState('');
 
@@ -86,12 +86,20 @@ export default function GioHangPage(props) {
   return (
     <Fragment>
       <div className='w-full overflow-hidden'>
-        <img className='w-full h-80' src={Banner} />
+        <img
+          className='w-full
+          md:h-52
+          lg:h-80'
+          src={Banner} />
       </div>
-      <div className='w-10/12 mx-auto my-5 grid grid-cols-12'>
-        <div className='col-span-3'>
+      <div className='my-5
+      w-full md:grid md:grid-cols-12
+      lg:w-10/12 lg:mx-auto lg:grid lg:grid-cols-12'>
+        <div className='
+        md:col-span-3
+        lg:col-span-3'>
           <div className='w-11/12 p-5 mx-auto bg-white border border-gray-300 rounded-2xl'>
-            <div className='w-11/12 mx-auto'>
+            <div className='w-full'>
               <img
                 src={
                   thongTinNguoiDungURL.avatar //Kiểm tra tài khoản có sẵn avatar
@@ -101,15 +109,23 @@ export default function GioHangPage(props) {
                       : userPic
                 }
                 alt="avatar"
-                className='w-36 h-36 mx-auto rounded-full'
+                className='mx-auto rounded-full
+                w-28
+                md:w-28 
+                lg:w-36'
               />
               {
                 unAuthorization
                   ? <Fragment />
-                  : <form onSubmit={formik.handleSubmit} className='w-full h-14 flex flex-wrap justify-center my-2 relative'>
+                  : <form onSubmit={formik.handleSubmit} className='w-full flex flex-wrap justify-center relative
+                  h-14
+                  md:h-14
+                  lg:h-16'>
                     <label
                       for="upload-photo"
-                      className='w-full h-5 cursor-pointer text-center underline font-bold'
+                      className='w-full h-5 cursor-pointer text-center underline font-bold
+                      text-xs
+                      lg:text-base'
                     >
                       Cập nhật ảnh đại diện
                     </label>
@@ -123,7 +139,8 @@ export default function GioHangPage(props) {
                       loading
                         ? <button
                           type='submit'
-                          className='bg-rose-500 text-white font-bold rounded-lg py-1 px-2 text-sm absolute bottom-0'
+                          className='bg-rose-500 text-white font-bold rounded-lg py-1 px-2 text-sm absolute bottom-0
+                          my-2'
                           onClick={formik.handleSubmit}
                         >
                           Upload
@@ -134,19 +151,40 @@ export default function GioHangPage(props) {
               }
             </div>
 
-            <div className='mt-5 pt-5 border-t border-t-gray-300'>
-              <p className='text-xl font-bold'>{thongTinNguoiDungURL.hoTen} đã xác nhận</p>
+            <div className='border-t border-t-gray-300
+            md:pt-2 text-center
+            lg:mt-2 lg:pt-5 lg:text-left'>
+              <p className='font-bold
+              md:text-xs
+              lg:text-xl'>
+                {thongTinNguoiDungURL.hoTen} đã xác nhận
+              </p>
               <span><FontAwesomeIcon icon={faCheck} /></span> <span>Địa chỉ email</span>
             </div>
           </div>
         </div>
-        <div className='col-span-9'>
+        <div className='
+        md:col-span-9
+        lg:col-span-9'>
           <div className='w-full p-2'>
-            <div className='w-full mb-10'>
-              <h1 className='text-4xl font-bold my-auto'>Xin chào, tôi là {thongTinNguoiDungURL.hoTen}</h1>
-              <p className='text-base text-gray-500 my-auto'>Bắt đầu tham gia vào 2022</p>
+            <div className='w-full border-b border-b-gray-300
+            pb-5 mb-5
+            lg:mb-10 lg:pb-10'>
+              <h1 className='font-bold my-auto
+              text-xl text-center
+              md:text-2xl md:text-left
+              lg:text-4xl lg:text-left'>
+                Xin chào, tôi là {thongTinNguoiDungURL.hoTen}
+              </h1>
+              <p className='text-base text-gray-500 my-auto
+              text-center
+              md:text-left lg:text-left'>
+                Bắt đầu tham gia vào 2022
+              </p>
               <p
-                className='text-base underline cursor-pointer mt-2 my-auto font-bold hover:text-gray-500'
+                className='text-base underline cursor-pointer mt-2 my-auto font-bold hover:text-gray-500
+                text-center
+                md:text-left lg:text-left'
                 onClick={() => { handleHienThiChinhSuaThongTin() }}
               >
                 Xem hồ sơ thông tin cá nhân
@@ -159,15 +197,14 @@ export default function GioHangPage(props) {
                 : <Fragment />
               }
             </div>
-            <div className='w-full mb-10 pb-5 border-b border-b-gray-300'>
-              <FontAwesomeIcon icon={faStar} className='mb-1' /> <span className='text-2xl font-bold my-auto'>0 đánh giá</span>
-            </div>
             {
               unAuthorization
                 ? <Fragment />
                 : <div className='w-full mb-10 pb-5 border-b border-b-gray-300'>
                   <p
-                    className='text-base underline cursor-pointer font-bold my-auto hover:text-gray-500'
+                    className='text-base underline cursor-pointer font-bold my-auto hover:text-gray-500
+                    text-center
+                md:text-left lg:text-left'
                   >
                     Vé đã đặt của bạn
                   </p>
@@ -180,7 +217,9 @@ export default function GioHangPage(props) {
             }
             <div className='w-full mb-10 pb-5 border-b border-b-gray-300'>
               <p
-                className='text-base underline cursor-pointer font-bold my-auto hover:text-gray-500'
+                className='text-base underline cursor-pointer font-bold my-auto hover:text-gray-500
+                text-center
+                md:text-left lg:text-left'
               >
                 Đánh giá của {thongTinNguoiDungURL.hoTen}
               </p>

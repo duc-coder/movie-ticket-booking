@@ -30,9 +30,9 @@ export default function HeaderTemplate() {
   //Render content menu người dùng
   const contentMenuBar = (
     <Menu className="
-    w-28
-    lg:w-52 
-    md:w-28">
+    w-fit
+    md:w-fit
+    lg:w-52">
       {ThongTinNguoiDungDangNhap !== null
         ? (
           <Fragment>
@@ -160,7 +160,7 @@ export default function HeaderTemplate() {
         md:col-span-4 md:px-3 md:flex md:items-center md:justify-end md:mr-0'>
           <button
             className='font-bold rounded-2xl bg-rose-600 text-white hover:bg-black
-            py-1 px-2 mr-2
+            py-1 px-2 mr-2 text-xs
             lg:text-base lg:py-1 lg:px-4 lg:mr-0  
             md:text-base md:py-1 md:px-4 md:mr-3'
             onClick={handleDisplaySearchInput}
@@ -179,7 +179,7 @@ export default function HeaderTemplate() {
             md:text-base md:py-1 md:px-1 md:flex md:justify-between md:items-center'>
               <FontAwesomeIcon
                 className='
-                text-lg px-1
+                text-lg px-2
                 lg:text-xl lg:px-1
                 md:text-xl md:px-1'
                 icon={faBars} />
@@ -187,7 +187,7 @@ export default function HeaderTemplate() {
                 ThongTinNguoiDungDangNhap !== null
                   ? <img
                     className='rounded-full
-                    px-1
+                     w-6
                     lg:w-10 lg:px-1
                     md:w-10 md:px-1'
                     src={ThongTinNguoiDungDangNhap.avatar} />
