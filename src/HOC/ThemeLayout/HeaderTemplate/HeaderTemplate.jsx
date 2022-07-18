@@ -118,7 +118,7 @@ export default function HeaderTemplate() {
     lg:w-full lg:h-fit lg:py-3 lg:bg-black/60 lg:absolute lg:z-10
     md:w-full md:h-fit md:py-3 md:bg-black/60 md:absolute md:z-10'>
       <div className='
-      w-full mx-1 flex justify-between items-start pt-2
+      w-full px-1 flex justify-between items-start pt-2
       lg:w-10/12 lg:mx-auto lg:flex-none lg:grid lg:grid-cols-12 lg:pt-0
       md:w-11/12 md:mx-auto md:flex-none md:grid md:grid-cols-12 md:pt-0'>
         <div className='
@@ -130,9 +130,9 @@ export default function HeaderTemplate() {
           </Link>
         </div>
         <div className='
-        absolute bottom-2 w-full px-5 flex justify-between
+        w-full absolute left-0 bottom-2 px-3 flex justify-between
         lg:static lg:col-span-8 lg:flex lg:items-center lg:justify-between lg:w-8/12 lg:mx-auto lg:my-auto
-        md:static md:col-span-6 md:flex md:items-center md:justify-between md:w-full md:mx-3 md:my-auto'>
+        md:static md:col-span-6 md:flex md:items-center md:justify-between md:mx-3 md:my-auto'>
           <h3 className='font-bold text-white cursor-pointer hover:text-rose-500
           lg:text-xl
           md:text-xl'>

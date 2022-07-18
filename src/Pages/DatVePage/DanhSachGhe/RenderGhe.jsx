@@ -58,11 +58,6 @@ export default function RenderGhe(props) {
                 cssEmtySeat = normalEmptySeat;
             };
 
-            if (ghe.daDat) { //Tình trạng ghế đã đặt bởi người khác
-                cssOtherReservedSeat = otherReservedSeat;
-                cssEmtySeat = '';
-            };
-
             //Thay đổi css ghế khi bấm chọn hoặc bấm huỷ
             let indexSelectSeat = seatSelect.findIndex((seat) => {
                 return seat.maGhe === ghe.maGhe
@@ -70,7 +65,12 @@ export default function RenderGhe(props) {
             if (indexSelectSeat !== -1) {
                 cssMySelectSeat = mySelectingSeat;
                 cssEmtySeat = '';
-                cssOtherReservedSeat = '';
+            };
+
+            if (ghe.daDat) { //Tình trạng ghế đã đặt bởi người khác
+                cssOtherReservedSeat = otherReservedSeat;
+                cssEmtySeat = '';
+                cssMySelectSeat = '';
             };
 
             return <button
@@ -80,10 +80,18 @@ export default function RenderGhe(props) {
                     handleSelectSeat(ghe)
                 }}
             >
-                <p className='absolute text-white'>
+                <p className='absolute text-white
+                text-xs
+                md:text-sm lg:text-sm'>
                     {ghe.tenGhe}
                 </p>
-                <img className={`${cssOtherReservedSeat} ${cssEmtySeat} ${cssMySelectSeat} border-solid border rounded-full p-1`} src={SeatPic} />
+                <img
+                    className={
+                        `${cssEmtySeat} ${cssMySelectSeat} ${cssOtherReservedSeat} border-solid border rounded-full 
+                        p-2
+                        md:p-1
+                        lg:p-1`}
+                    src={SeatPic} />
             </button >
         })
     };

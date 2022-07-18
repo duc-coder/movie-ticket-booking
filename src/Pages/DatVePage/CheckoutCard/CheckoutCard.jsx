@@ -33,6 +33,7 @@ export default function CheckoutCard(props) {
     return thongTinGhe.map((ghe, index) => {
       return <p
         key={index}
+        className='text-right'
       >
         {ghe.tenGhe} - {ghe.giaVe.toLocaleString()} VND
       </p>
@@ -64,7 +65,10 @@ export default function CheckoutCard(props) {
     <div className='mx-2 p-2 bg-white'>
       <div className='w-full flex justify-center'>
         <img
-          className='h-96'
+          className='
+          h-0
+          md:h-96
+          lg:h-96'
           src={
             _.isEmpty(ThongTinPhim)
               ? ''
@@ -72,15 +76,35 @@ export default function CheckoutCard(props) {
           }
         />
       </div>
-      <div className='w-11/12 mx-auto mt-5 flex items-start justify-between border-b border-gray-400'>
-        <p className='text-base font-bold'>Ghế đang chọn:</p>
-        <div>
+      <div className='w-11/12 mx-auto flex items-start justify-between border-b border-gray-400
+      mt-2
+      md:mt-5
+      lg:mt-5'>
+        <p
+          className='font-bold
+          md:text-sm
+          lg:w-fit lg:text-base'>
+          Ghế đang chọn:
+        </p>
+        <div
+          className='
+          text-xs
+          lg:w-fit lg:text-base'>
           {renderThongTinVe()}
         </div>
       </div>
-      <div className='w-11/12 mx-auto mt-5 flex items-end justify-between border-b border-gray-400'>
-        <p className='text-base font-bold'>Tổng tiền:</p>
-        <p className='text-lg font-bold'>
+      <div className='w-11/12 mx-auto flex items-start justify-between border-b border-gray-400
+      mt-2
+      md:mt-5
+      lg:mt-5'>
+        <p
+          className='font-bold
+          md:text-sm
+          lg:w-fit lg:text-base'>
+          Tổng tiền:
+        </p>
+        <p className='font-bold
+        lg:w-fit lg:text-lg'>
           {renderTongTienVe.toLocaleString()} VND
         </p>
       </div>

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { danhSachPhongVeAsync, selectDanhSachPhongVe } from '../../reduxToolkit/datVeSlice';
@@ -23,11 +23,19 @@ export default function DatVePage() {
   return (
     <div className='w-full bg-gray-700'>
       <BannerDatVePage ThongTinPhim={danhSachPhongVe.thongTinPhim} />
-      <div className='w-11/12 mx-auto py-5 grid grid-cols-12'>
-        <div className='col-span-9'>
+      <div className='
+      w-full py-5
+      md:py-5 md:grid md:grid-cols-12
+      lg:w-11/12 lg:mx-auto lg:py-5 lg:grid lg:grid-cols-12'>
+        <div className='
+        md:col-span-8
+        lg:col-span-9'>
           <DanhSachGhe DanhSachGhe={danhSachPhongVe.danhSachGhe} />
         </div>
-        <div className='col-span-3'>
+        <div className='
+        mt-5
+        md:col-span-4 md:mt-5
+        lg:col-span-3 lg:mt-5'>
           <CheckoutCard ThongTinPhim={danhSachPhongVe.thongTinPhim} />
         </div>
       </div>
